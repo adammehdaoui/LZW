@@ -1,0 +1,15 @@
+#Saves
+aLZW V1 en char.c
+aLZW V2 binaire isa en sortie.c
+aLZW V3 binaire prof out puis in.c
+
+#Object files
+*.o
+*.bin
+
+#Text file
+*.txt
+
+#Executable
+*.sh
+resultat
