@@ -1,3 +1,6 @@
+#VSCODE Garbage
+.vscode/
+
 #Saves
 aLZW V1 en char.c
 aLZW V2 binaire isa en sortie.c
