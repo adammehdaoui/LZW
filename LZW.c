@@ -49,13 +49,15 @@ void compress(FILE *input_file,FILE *output_file) {
         taille = quelle_taille(last_valid);
         while(i<taille)
             {
-                chn[i] = last_valid[i] ;i++;  
+                chn[i] = last_valid[i] ;
+                i++;  
             }
         chn[i] = input_symbol;
         i++;
         while(i<24)
             {
-                chn[i] = 0 ;i++;  
+                chn[i] = 0 ;
+                i++;  
             }
 
         //printf("Recherche de %u %u %u :%d code %d\n",chn[0],chn[1],chn[2],Recherche(head,chn),Recherche_code_dans_l_arbre(head,chn));
@@ -95,11 +97,8 @@ void compress(FILE *input_file,FILE *output_file) {
     bit_flush(bf);
     bit_end(bf);
 
-    for (i = 0; i < next_code; i++) {
-        chn[0] = i;
-        Destruction_arbre(&head, chn);
-    }
-
+    //printf("Nombre de noeuds : %d %p\n", CompteurNoeuds(head),head);
+    Liberation(head);
 }
 
 void decompress(FILE *input_file,FILE *output_file) {
@@ -177,10 +176,8 @@ void decompress(FILE *input_file,FILE *output_file) {
     bit_flush(bf);
     bit_end(bf);
 
-    for (i = 0; i < next_code; i++) {
-        chn[0] = i;
-        Destruction_arbre(&head, chn);
-    }
+    //printf("Nombre de noeuds : %d %p\n", CompteurNoeuds(head),head);
+    Liberation(head);
 }
 
 int main() {
@@ -195,9 +192,10 @@ int main() {
         exit(1);
     } 
     compress(input_file, output_file);
+
     fclose(input_file);
     fclose(output_file);
-
+    printf("--------------------\n");
     input_file = fopen("comp_output.txt", "rb");
     if (input_file == NULL) {
         fprintf(stderr, "Error opening file\n");
@@ -210,6 +208,7 @@ int main() {
     } 
 
     decompress(input_file,output_file);
+
     fclose(input_file);
     fclose(output_file);
 }

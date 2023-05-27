@@ -30,6 +30,7 @@ int compare(uint32_t * x,uint32_t * y){
 struct Trie* CreationFeuille(int code)
 {
     struct Trie* node = (struct Trie*)malloc(sizeof(struct Trie));
+    //printf("creation noeud %p  %d\n",node,code);
     node->EstFeuille = 0;
     node->code_ascii = code;
     
@@ -48,6 +49,7 @@ void insert(struct Trie *head, uint32_t * str, int code)
     // partir du nœud racine
     struct Trie* curr = head;
     int i=0;
+    //printf("creation noeud %u %u %u %u %u %u %u\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6]);
 
     while (str[i])
     {
@@ -141,61 +143,6 @@ int A_un_enfant(struct Trie* curr)
  
     return 0;
 }
- 
-// Fonction récursif pour supprimer une string d'un Trie
-int Destruction_arbre(struct Trie **curr, uint32_t * str)
-{
-    int i=0;
-    
-    // retourne 0 si Trie est vide
-    if (*curr == NULL) {
-        return 0;
-    }
- 
-    // si la fin de la string n'est pas atteinte
-    if (str[i])
-    {
-        // se répète pour le nœud correspondant au caractère suivant dans
-        // la string et si elle renvoie 1, supprime le nœud courant
-        // (si ce n'est pas une feuille)
-        if (*curr != NULL && (*curr)->character[str[i]] != NULL &&
-            Destruction_arbre(&((*curr)->character[str[i]]), str + 1) &&
-            (*curr)->EstFeuille == 0)
-        {
-            if (!A_un_enfant(*curr))
-            {
-                free(*curr);
-                (*curr) = NULL;
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-    }
- 
-    // si la fin de la string est atteinte
-    if ((*curr)->EstFeuille)
-    {
-        // si le nœud courant est un nœud feuille et n'a pas d'enfant
-        if (!A_un_enfant(*curr))
-        {
-            free(*curr);    // supprimer le noeud courant
-            (*curr) = NULL;
-            return 1;       // supprimer les nœuds parents non feuilles
-        }
- 
-        // si le nœud courant est un nœud feuille et a des enfants
-        else {
-            // marque le nœud actuel comme un nœud non-feuille (NE LE SUPPRIMEZ PAS)
-            (*curr)->EstFeuille = 0;
-            return 0;       // ne supprime pas ses nœuds parents
-        }
-    }
- 
-    return 0;
-}
- 
 
 // Fonction récursive pour rechercher un code ASCII dans un Trie et renvoyer la chaîne correspondante
 struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
@@ -246,4 +193,37 @@ int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str)
         return 0;
     }
     return 1;
+}
+
+int CompteurNoeuds(struct Trie* head)
+{
+    if (head == NULL) {
+        return 0;
+    }
+
+    int count = 1; // Compte le nœud courant
+
+    for (int i = 0; i < CHAR_SIZE; i++) {
+        if (head->character[i] != NULL)
+            count += CompteurNoeuds(head->character[i]); // Compte les nœuds des enfants récursivement
+    }
+
+    return count;
+}
+
+void Liberation(struct Trie* head)
+{
+    for (int i = 0; i < CHAR_SIZE; i++) {
+        if (head->character[i] != NULL)
+            Liberation(head->character[i]);
+    }
+
+    if (head != NULL)
+    {
+        //printf("Liberation OK %d\n",head->code_ascii);
+        free(head);
+    }
+            
+ 
+  
 }
