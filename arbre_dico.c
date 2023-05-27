@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int quelle_taille(uint16_t * chaine){
+int quelle_taille(uint32_t * chaine){
     int i=0;
     while(chaine[i] != 0){
         i++;
@@ -10,7 +10,7 @@ int quelle_taille(uint16_t * chaine){
     return i;
 }
 
-int compare(uint16_t * x,uint16_t * y){
+int compare(uint32_t * x,uint32_t * y){
     int i=0;
     int taillex = quelle_taille(x);
     int tailley = quelle_taille(y);
@@ -27,21 +27,23 @@ int compare(uint16_t * x,uint16_t * y){
 
 
 // Fonction qui renvoie un nouveau noeud Trie
-struct Trie* getNewTrieNode(int code)
+struct Trie* CreationFeuille(int code)
 {
     struct Trie* node = (struct Trie*)malloc(sizeof(struct Trie));
-    node->isLeaf = 0;
+    node->EstFeuille = 0;
     node->code_ascii = code;
     
     for (int i = 0; i < CHAR_SIZE; i++) {
         node->character[i] = NULL;
     }
+
+    memset(node->caractere,0,24*sizeof(uint32_t));
     
     return node;
 }
  
 // Fonction itérative pour insérer une string dans un Trie
-void insert(struct Trie *head, uint16_t * str, int code)
+void insert(struct Trie *head, uint32_t * str, int code)
 {
     // partir du nœud racine
     struct Trie* curr = head;
@@ -52,7 +54,7 @@ void insert(struct Trie *head, uint16_t * str, int code)
         //printf("dans le while %u %d\n",str[i],i);
         // crée un nouveau nœud si le chemin n'existe pas
         if (curr->character[str[i]] == NULL) 
-            curr->character[str[i]] = getNewTrieNode(code);
+            curr->character[str[i]] = CreationFeuille(code);
  
         // passe au nœud suivant
         curr = curr->character[str[i]];
@@ -62,13 +64,13 @@ void insert(struct Trie *head, uint16_t * str, int code)
     }
  
     // marque le nœud courant comme une feuille
-    curr->isLeaf = 1;
-    memcpy(curr->caractere,str,quelle_taille(str)*sizeof(uint16_t));
+    curr->EstFeuille = 1;
+    memcpy(curr->caractere,str,quelle_taille(str)*sizeof(uint32_t));
 }
  
 // Fonction itérative pour rechercher une string dans un Trie. Il renvoie 1
 // si la string est trouvée dans le Trie ; sinon, il renvoie 0.
-int search(struct Trie* head, uint16_t * str)
+int Recherche(struct Trie* head, uint32_t * str)
 {
     int i=0;
     
@@ -94,11 +96,11 @@ int search(struct Trie* head, uint16_t * str)
  
     // renvoie 1 si le noeud courant est une feuille et que le
     // la fin de la string est atteinte
-    return curr->isLeaf;
+    return curr->EstFeuille;
 }
 
 
- int search_code(struct Trie* head, uint16_t* str)
+ int Recherche_code_dans_l_arbre(struct Trie* head, uint32_t* str)
 {
     int i=0;
     
@@ -128,7 +130,7 @@ int search(struct Trie* head, uint16_t * str)
 }
  
 // Renvoie 1 si un nœud Trie donné a des enfants
-int hasChildren(struct Trie* curr)
+int A_un_enfant(struct Trie* curr)
 {
     for (int i = 0; i < CHAR_SIZE; i++)
     {
@@ -141,7 +143,7 @@ int hasChildren(struct Trie* curr)
 }
  
 // Fonction récursif pour supprimer une string d'un Trie
-int deletion(struct Trie **curr, uint16_t * str)
+int Destruction_arbre(struct Trie **curr, uint32_t * str)
 {
     int i=0;
     
@@ -157,10 +159,10 @@ int deletion(struct Trie **curr, uint16_t * str)
         // la string et si elle renvoie 1, supprime le nœud courant
         // (si ce n'est pas une feuille)
         if (*curr != NULL && (*curr)->character[str[i]] != NULL &&
-            deletion(&((*curr)->character[str[i]]), str + 1) &&
-            (*curr)->isLeaf == 0)
+            Destruction_arbre(&((*curr)->character[str[i]]), str + 1) &&
+            (*curr)->EstFeuille == 0)
         {
-            if (!hasChildren(*curr))
+            if (!A_un_enfant(*curr))
             {
                 free(*curr);
                 (*curr) = NULL;
@@ -173,10 +175,10 @@ int deletion(struct Trie **curr, uint16_t * str)
     }
  
     // si la fin de la string est atteinte
-    if (*str == '\0' && (*curr)->isLeaf)
+    if ((*curr)->EstFeuille)
     {
         // si le nœud courant est un nœud feuille et n'a pas d'enfant
-        if (!hasChildren(*curr))
+        if (!A_un_enfant(*curr))
         {
             free(*curr);    // supprimer le noeud courant
             (*curr) = NULL;
@@ -186,7 +188,7 @@ int deletion(struct Trie **curr, uint16_t * str)
         // si le nœud courant est un nœud feuille et a des enfants
         else {
             // marque le nœud actuel comme un nœud non-feuille (NE LE SUPPRIMEZ PAS)
-            (*curr)->isLeaf = 0;
+            (*curr)->EstFeuille = 0;
             return 0;       // ne supprime pas ses nœuds parents
         }
     }
@@ -196,14 +198,14 @@ int deletion(struct Trie **curr, uint16_t * str)
  
 
 // Fonction récursive pour rechercher un code ASCII dans un Trie et renvoyer la chaîne correspondante
-struct Trie* searchHelper(struct Trie* node, int code)
+struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
 {
     if (node == NULL) {
         return NULL;
     }
 
     // Si le nœud courant est une feuille et son code correspond au code recherché
-    if (node->isLeaf && node->code_ascii == code)
+    if (node->EstFeuille && node->code_ascii == code)
     {
         return node;
     }
@@ -214,7 +216,7 @@ struct Trie* searchHelper(struct Trie* node, int code)
         if (node->character[i] != NULL)
         {
             // Appelle récursivement la recherche pour les nœuds enfants
-            struct Trie* result = searchHelper(node->character[i], code);
+            struct Trie* result = Recherche_dans_l_arbre(node->character[i], code);
             if (result != NULL) {
                 return result;
             }
@@ -225,7 +227,7 @@ struct Trie* searchHelper(struct Trie* node, int code)
 }
 
 // Fonction pour rechercher un code ASCII dans un Trie et renvoyer la chaîne correspondante
-int search_node(struct Trie* head, int code, uint16_t* str)
+int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str)
 {
     struct Trie* node;
     
@@ -233,10 +235,10 @@ int search_node(struct Trie* head, int code, uint16_t* str)
         return 0;
     }    
     //printf("code = %d\n",code);
-    node = searchHelper(head, code);
+    node = Recherche_dans_l_arbre(head, code);
     if (node != NULL) {
         //printf("node = %p car %u %u %u\n",node,node->caractere[0],node->caractere[1],node->caractere[2]);
-        memcpy(str,node->caractere,quelle_taille(node->caractere)*sizeof(uint16_t));
+        memcpy(str,node->caractere,quelle_taille(node->caractere)*sizeof(uint32_t));
         return 1;
     }
     
