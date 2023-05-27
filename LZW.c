@@ -14,23 +14,20 @@
 void compress(FILE *input_file,FILE *output_file) {
     BIT_FILE *bf = bit_begin(output_file);
 
-    uint16_t next_code = NEXT_CODE;
+    uint32_t next_code = NEXT_CODE;
     uint8_t input_symbol;
-    //uint16_t current_code_size = 9;
-    uint16_t chn[24];
-    uint16_t last_valid[24];
+    uint32_t chn[24];
+    uint32_t last_valid[24];
     int i;
     int j;
     int taille;
-    uint16_t last_code = 0;
+    uint32_t last_code = 0;
 
-    struct Trie* head = getNewTrieNode(-1);
+    struct Trie* head = CreationFeuille(-1);
 
-    for (i=0;i<24;i++)
-        {
-            chn[i] = 0;
-            last_valid[i] = 0;
-        }
+    memset(chn,0,24*sizeof(uint32_t));
+    memset(last_valid,0,24*sizeof(uint32_t));
+
     // Initialise le dictionnaire avec les codes ascii
     for (i = 0; i < 256; i++) {
         chn[0] = i;
@@ -41,13 +38,12 @@ void compress(FILE *input_file,FILE *output_file) {
     
     last_code = 0; 
     //fprintf(output_file,"%u ",256);
-    bit_put(bf, 256, 9);
+    bit_put(bf, 256, BITS);
     
     while ( ! feof(input_file)) { //while not end of file do
         input_symbol = getc(input_file);
         //printf("input_symbol %d\n",input_symbol);
         if(input_symbol == 255) break;//fin
-        //Conversion en chaines de caractères
         i=0;
 
         taille = quelle_taille(last_valid);
@@ -62,82 +58,67 @@ void compress(FILE *input_file,FILE *output_file) {
                 chn[i] = 0 ;i++;  
             }
 
-        //printf("search de %u %u %u :%d code %d\n",chn[0],chn[1],chn[2],search(head,chn),search_code(head,chn));
+        //printf("Recherche de %u %u %u :%d code %d\n",chn[0],chn[1],chn[2],Recherche(head,chn),Recherche_code_dans_l_arbre(head,chn));
 
-        if (search(head,chn) == 1) 
+        if (Recherche(head,chn) == 1) 
         {
             // Le code existe dans le dictionnaire
-            for (i=0; i< 12; i++)
-                last_valid[i] = chn[i];
-            last_code = search_code(head,chn);
+            memcpy(last_valid,chn,12*sizeof(uint32_t));
+            last_code = Recherche_code_dans_l_arbre(head,chn);
             //printf("%u %u %u Trouvé! Last_valid %u %u %u  Last_code %d  \n",chn[0],chn[1],chn[2],last_valid[0],last_valid[1],last_valid[2],last_code);
         } 
         else 
         {
-            // Code does not exist in the dictionary
-            //bit_put(bf, prev_code, current_code_size);
+            // La sequence n existe pas: ajout au dictionnaire
             insert(head, chn ,next_code);
             //printf("Ajouté %u %u %u en %d\n",chn[0],chn[1],chn[2],next_code);
             next_code++;
 
-            //fprintf(output_file,"%u ",last_code);
-            bit_put(bf, last_code, 9); 
+            //printf("%u ",last_code);
+            bit_put(bf, last_code, BITS); 
 
             last_valid[0] = input_symbol;
-            last_valid[1] = 0;
-            last_valid[2] = 0;
-
-            chn[0] = last_valid[0];
-            for (i=1;i<12;i++)
+            chn[0] = input_symbol;
+            for (i=1;i<12;i++){
                 chn[i] = 0;
-            last_code = search_code(head,chn);
+                last_valid[i] = 0;
+            }
+            last_code = Recherche_code_dans_l_arbre(head,chn);
             //printf("%u %u %u Pas trouvé: Last valid %u %u %u Last code %d  Next code %d\n",chn[0],chn[1],chn[2],last_valid[0],last_valid[1],last_valid[2],last_code,next_code);
         }
     }
     //fprintf(output_file,"%u ",last_code);
-    bit_put(bf, last_code, 9);
+    bit_put(bf, last_code, BITS);
     //fprintf(output_file,"%u",END_CODE);
-    bit_put(bf, END_CODE, 9);
-
-    // Fin du fichier
-    //bit_put(bf, prev_code, current_code_size);
-    //bit_put(bf, END_CODE, current_code_size);
+    bit_put(bf, END_CODE, BITS);
 
     bit_flush(bf);
     bit_end(bf);
 
-    for (i = 0; i < 256; i++) {
+    for (i = 0; i < next_code; i++) {
         chn[0] = i;
-        deletion(&head, chn);
+        Destruction_arbre(&head, chn);
     }
 
 }
 
 void decompress(FILE *input_file,FILE *output_file) {
-    BIT_FILE *bf = bit_begin(input_file);
 
-    uint16_t next_code = NEXT_CODE;
-    //uint16_t current_code_size = 9;
-    //uint16_t max_code_size = MAX_CODE_SIZE;
+    uint32_t next_code = NEXT_CODE;
     int i, j;
-    int taille;
     int currentNumber;
-    char *endChar;
-    char buffer[1000];
-    uint16_t last_valid[24];
-    uint16_t seq[24];
-    uint16_t chn[24];
+    uint32_t last_valid[24];
+    uint32_t seq[24];
+    uint32_t chn[24];
     int Trouve=0;
     uint32_t code;
+    BIT_FILE *bf = bit_begin(input_file);
+    struct Trie* head = CreationFeuille(-1);
 
-    struct Trie* head = getNewTrieNode(-1);
+    memset(chn,0,24*sizeof(uint32_t));
+    memset(last_valid,0,24*sizeof(uint32_t));
+    memset(seq,0,24*sizeof(uint32_t));
 
-    for (i=0;i<24;i++)
-        {
-            chn[i] = 0;
-            last_valid[i] = 0;
-            seq[i] = 0;
-        }
     // Initialise le dictionnaire avec les codes ascii
     for (i = 0; i < 256; i++) {
         chn[0] = i;
@@ -152,62 +133,54 @@ void decompress(FILE *input_file,FILE *output_file) {
 
             if (currentNumber != 257 && currentNumber != 256)
             {
-                printf("Analyse du %d\n",currentNumber);
-
-                Trouve = search_node(head,currentNumber,*(&seq));
-                printf("Trouve %d seq %u %u %u\n",Trouve,seq[0],seq[1],seq[2]);
-
+                //printf("Analyse du %d\n",currentNumber);
+                memset(seq,0,24*sizeof(uint32_t));
+                Trouve = Recherche_un_noeud(head,currentNumber,*(&seq));
+                
                 if (Trouve != 0){ //Trouvé
-                    taille = quelle_taille(seq);
-                    
-                    printf("Seq %u %u %u\n",seq[0],seq[1],seq[2]);
                     if (last_valid[0] != 0) {
-                        taille = quelle_taille(last_valid);
-                        for (i=0;i<taille;i++)
-                            chn[i] = last_valid[i];
-                        chn[taille] = seq[0];
+                        memset(chn,0,quelle_taille(chn)*sizeof(uint32_t));    
+                        memcpy(chn,last_valid,quelle_taille(last_valid)*sizeof(uint32_t));
+                        chn[quelle_taille(last_valid)] = seq[0];
                         //printf("Taille %d\n",taille);
                         insert(head,chn,next_code);
-                        printf("Ajout dico en:%d last:%u %u %u\n",next_code,chn[0],chn[1],chn[2]);
+                        //printf("Ajout dico en:%d last:%u %u %u %u\n",next_code,chn[0],chn[1],chn[2],chn[3]);
                         next_code++;
                     }
                     
-                    Trouve = search_node(head,currentNumber,&(*last_valid));
+                    memset(last_valid,0,quelle_taille(last_valid)*sizeof(uint32_t));
+                    Trouve = Recherche_un_noeud(head,currentNumber,&(*last_valid));
                     
-                    taille = quelle_taille(seq); 
-                    for (i=0;i<taille;i++)
+                    for (i=0;i<quelle_taille(seq);i++)
                         fprintf(output_file,"%c", seq[i]);   
-                    printf("%d Trouvé! last:%u %u %u seq:%u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],next_code);
+                    //printf("%d Trouvé! last:%u %u %u seq:%u %u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],seq[3],next_code);
                 } 
                 else //Pas trouvé
                 {
-                    taille = quelle_taille(last_valid);
-                    for (i=0;i<taille;i++)
-                        seq[i] = last_valid[i];
-                    seq[taille] = last_valid[0];
+                    memcpy(seq,last_valid,quelle_taille(last_valid)*sizeof(uint32_t));  
+                    seq[quelle_taille(last_valid)] = last_valid[0];
 
-                    taille = quelle_taille(last_valid);
-                        for (i=0;i<taille;i++)
-                            chn[i] = last_valid[i];
-                        chn[taille] = seq[0];
+                    memcpy(chn,last_valid,quelle_taille(last_valid)*sizeof(uint32_t));   
+                    chn[quelle_taille(last_valid)] = seq[0];
                     insert(head,chn,next_code);
-                    printf("Ajout dico next:%d last:%u %u %u\n",next_code,chn[0],chn[1],chn[2]);
+                    //printf("Ajout dico next:%d last:%u %u %u\n",next_code,chn[0],chn[1],chn[2]);
                     next_code++;
 
-                    taille = quelle_taille(seq);
-                    for (i=0;i<taille;i++)
-                        last_valid[i] = seq[i];
-
-                    taille = quelle_taille(seq); 
-                    for (i=0;i<taille;i++)
+                    memcpy(last_valid,seq,quelle_taille(seq)*sizeof(uint32_t)) ;   
+                    for (i=0;i<quelle_taille(seq);i++)
                         fprintf(output_file,"%c", seq[i]);     
-                    printf("%d Pas Trouvé! last:%u %u %u seq:%u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],next_code);
+                    //printf("%d Pas Trouvé! last:%u %u %u seq:%u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],next_code);
                 }
             }       
     }
 
     bit_flush(bf);
     bit_end(bf);
+
+    for (i = 0; i < next_code; i++) {
+        chn[0] = i;
+        Destruction_arbre(&head, chn);
+    }
 }
 
 int main() {
@@ -240,50 +213,3 @@ int main() {
     fclose(input_file);
     fclose(output_file);
 }
-
-
-
-// ETrie l'implémentation en C - Insertion, Recherche et Suppression
-/*int main()
-{
-
-    insert(head, "A" ,65);
-    printf("%d ", search(head, "A"));       // imprimer 1
- 
-    insert(head, "AB", 66);
-    printf("%d ", search(head, "AB"));  // imprimer 1
- 
-    printf("%d ", search(head, "C"));       // affiche 0 (absent)
- 
-    insert(head, "hell",67);
-    printf("%d ", search(head, "hell"));        // imprimer 1
- 
-    insert(head, "h", 68);
-    printf("%d \n", search(head, "h"));         // imprimer 1 + retour à la ligne
- 
-    deletion(&head, "hello");
-    printf("%d ", search(head, "hello"));       // print 0 (hello deleted)
-    printf("%d ", search(head, "helloworld"));  // imprimer 1
-    printf("%d \n", search(head, "hell"));      // imprimer 1 + retour à la ligne
- 
-    deletion(&head, "h");
-    printf("%d ", search(head, "h"));           // affiche 0 (h supprimé)
-    printf("%d ", search(head, "hell"));        // imprimer 1
-    printf("%d\n", search(head, "helloworld")); // imprimer 1 + retour à la ligne
- 
-    deletion(&head, "helloworld");
-    printf("%d ", search(head, "helloworld"));  // imprime 0
-    printf("%d ", search(head, "hell"));        // imprimer 1
- 
-    deletion(&head, "hell");
-    printf("%d\n", search(head, "hell"));       // affiche 0 + retour à la ligne
- 
-    if (head == NULL) {
-        printf("Trie empty!!\n");               // Trie est vide maintenant
-    }
- 
-    printf("%d ", search(head, "hell"));        // imprime 0
- 
-    return 0;
-}
-*/

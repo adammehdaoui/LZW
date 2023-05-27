@@ -5,27 +5,27 @@
 
 struct Trie
 {
-    int isLeaf;             // 1 lorsque le nœud est un nœud feuille
+    int EstFeuille;             
     struct Trie* character[CHAR_SIZE];
     int code_ascii;
-    uint16_t caractere[24];
+    uint32_t caractere[24];
 };
  
 
-int quelle_taille(uint16_t * chaine) ;
+int quelle_taille(uint32_t * chaine) ;
 
-int compare(uint16_t * x,uint16_t * y);
+int compare(uint32_t * x,uint32_t * y);
 
-struct Trie* getNewTrieNode(int code);
+struct Trie* CreationFeuille(int code);
  
-void insert(struct Trie *head, uint16_t * str, int code);
+void insert(struct Trie *head, uint32_t * str, int code);
  
-int search(struct Trie* head, uint16_t* str);
+int Recherche(struct Trie* head, uint32_t* str);
 
-int hasChildren(struct Trie* curr);
+int A_un_enfant(struct Trie* curr);
 
-int deletion(struct Trie **curr, uint16_t* str);
+int Destruction_arbre(struct Trie **curr, uint32_t* str);
 
-int search_code(struct Trie* head, uint16_t* str);
+int Recherche_code_dans_l_arbre(struct Trie* head, uint32_t* str);
 
-int search_node(struct Trie* head, int code, uint16_t* str);
+int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str);
