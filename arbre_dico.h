@@ -24,8 +24,10 @@ int Recherche(struct Trie* head, uint32_t* str);
 
 int A_un_enfant(struct Trie* curr);
 
-int Destruction_arbre(struct Trie **curr, uint32_t* str);
-
 int Recherche_code_dans_l_arbre(struct Trie* head, uint32_t* str);
 
 int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str);
+
+int CompteurNoeuds(struct Trie* head);
+
+void Liberation(struct Trie* head);

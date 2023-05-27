@@ -18,4 +18,5 @@ aarbre_dico copy.c
 #Executable
 *.sh
 resultat
+result
 LZW
