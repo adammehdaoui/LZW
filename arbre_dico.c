@@ -10,36 +10,17 @@ int quelle_taille(uint32_t * chaine){
     return i;
 }
 
-int compare(uint32_t * x,uint32_t * y){
-    int i=0;
-    int taillex = quelle_taille(x);
-    int tailley = quelle_taille(y);
-
-    while(i<taillex && i<tailley){
-        if (x[i] > y[i]) return 1;
-        if (x[i] < y[i]) return -1;
-        i++;
-    }
-
-    if (taillex == tailley) return 0;
-    else return 1;
-}
-
-
 // Fonction qui renvoie un nouveau noeud Trie
 struct Trie* CreationFeuille(int code)
 {
     struct Trie* node = (struct Trie*)malloc(sizeof(struct Trie));
     //printf("creation noeud %p  %d\n",node,code);
-    node->EstFeuille = 0;
     node->code_ascii = code;
     
     for (int i = 0; i < CHAR_SIZE; i++) {
         node->character[i] = NULL;
     }
 
-    memset(node->caractere,0,24*sizeof(uint32_t));
-    
     return node;
 }
  
@@ -49,7 +30,7 @@ void insert(struct Trie *head, uint32_t * str, int code)
     // partir du nœud racine
     struct Trie* curr = head;
     int i=0;
-    //printf("creation noeud %u %u %u %u %u %u %u\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6]);
+    //printf("creation noeud %u %u %u %u %u %u %u %u %u %u\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],str[8],str[9]);
 
     while (str[i])
     {
@@ -65,9 +46,6 @@ void insert(struct Trie *head, uint32_t * str, int code)
         i++;
     }
  
-    // marque le nœud courant comme une feuille
-    curr->EstFeuille = 1;
-    memcpy(curr->caractere,str,quelle_taille(str)*sizeof(uint32_t));
 }
  
 // Fonction itérative pour rechercher une string dans un Trie. Il renvoie 1
@@ -84,21 +62,14 @@ int Recherche(struct Trie* head, uint32_t * str)
     struct Trie* curr = head;
     while (str[i])
     {
-        // passe au nœud suivant
         curr = curr->character[str[i]];
  
-        // si la string est invalide (a atteint la fin d'un chemin dans le Trie)
-        if (curr == NULL) {
+        if (curr == NULL) 
             return 0;
-        }
- 
-        // passe au caractère suivant
         i++;
     }
  
-    // renvoie 1 si le noeud courant est une feuille et que le
-    // la fin de la string est atteinte
-    return curr->EstFeuille;
+    return 1;
 }
 
 
@@ -152,7 +123,7 @@ struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
     }
 
     // Si le nœud courant est une feuille et son code correspond au code recherché
-    if (node->EstFeuille && node->code_ascii == code)
+    if (node->code_ascii == code)
     {
         return node;
     }
@@ -177,22 +148,36 @@ struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
 int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str)
 {
     struct Trie* node;
+    struct Trie* node_enfant;
+    struct Trie* node_parent;
+    
+    int enieme = 0;
+    int i = 0;
+    uint32_t chn[24];
     
     if (head == NULL ) {
         return 0;
     }    
-    //printf("code = %d\n",code);
+    
+    memset(chn,0,24*sizeof(uint32_t));
     node = Recherche_dans_l_arbre(head, code);
-    if (node != NULL) {
-        //printf("node = %p car %u %u %u\n",node,node->caractere[0],node->caractere[1],node->caractere[2]);
-        memcpy(str,node->caractere,quelle_taille(node->caractere)*sizeof(uint32_t));
-        return 1;
+    
+    i = CompteurNiveaux(head,node)-2;
+    node_enfant = node;
+    while(node_enfant != NULL){
+        node_parent = Trouver_Noeud_Pere(head, node_enfant);
+        enieme = Lien_character_pere_fils(node_parent, node_enfant);
+        chn[i] = enieme;
+        node_enfant = node_parent;
+        i--;
     }
     
-    if (node == NULL) {
-        return 0;
+    if (node != NULL) {
+        memcpy(str,chn,quelle_taille(chn)*sizeof(uint32_t));
+        return 1;
     }
-    return 1;
+    else return 0;
+
 }
 
 int CompteurNoeuds(struct Trie* head)
@@ -220,10 +205,62 @@ void Liberation(struct Trie* head)
 
     if (head != NULL)
     {
-        //printf("Liberation OK %d\n",head->code_ascii);
         free(head);
     }
-            
- 
   
+}
+
+struct Trie* Trouver_Noeud_Pere(struct Trie* head, struct Trie* child)
+{
+    if (head == NULL || child == NULL)
+        return NULL;
+    
+    for (int i = 0; i < CHAR_SIZE; i++) {
+        if (head->character[i] == child)
+            return head;
+        
+        if (head->character[i] != NULL) {
+            struct Trie* node = Trouver_Noeud_Pere(head->character[i], child);
+            if (node != NULL)
+                return node;
+        }
+    }
+    
+    return NULL;
+}
+
+int Lien_character_pere_fils(struct Trie* pere, struct Trie* fils)
+{
+    if (fils == NULL || pere == NULL) {
+        //printf("on passe dans le if\n");
+        return 0;
+    }   
+
+    for (int i = 0; i < CHAR_SIZE; i++) {
+        if (pere->character[i] != NULL) {
+            if (pere->character[i] == fils)
+                return i;
+        }
+    }
+
+    return 0;
+}
+
+int CompteurNiveaux(struct Trie * head,struct Trie * node){
+    int i=0;
+    struct Trie * node_enfant;
+    struct Trie * node_parent;
+    
+    if (head == NULL || node == NULL) {
+        return 0;
+    }    
+    
+    node_enfant = node;
+    while(node_enfant != NULL){
+        node_parent = Trouver_Noeud_Pere(head, node_enfant);
+        node_enfant = node_parent;
+        i++;
+    }
+    
+    return i;
 }

@@ -5,16 +5,12 @@
 
 struct Trie
 {
-    int EstFeuille;             
     struct Trie* character[CHAR_SIZE];
     int code_ascii;
-    uint32_t caractere[24];
 };
  
 
 int quelle_taille(uint32_t * chaine) ;
-
-int compare(uint32_t * x,uint32_t * y);
 
 struct Trie* CreationFeuille(int code);
  
@@ -31,3 +27,9 @@ int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str);
 int CompteurNoeuds(struct Trie* head);
 
 void Liberation(struct Trie* head);
+
+struct Trie* Trouver_Noeud_Pere(struct Trie* head, struct Trie* child);
+
+int Lien_character_pere_fils(struct Trie* pere, struct Trie* fils);
+
+int CompteurNiveaux(struct Trie * head,struct Trie * node);
