@@ -11,24 +11,24 @@ struct Trie
  
 struct Trie* CreationFeuille(int code);
  
-void insert(struct Trie *head, uint32_t * str, int code, int taille);
+void insert(struct Trie *racine, uint32_t * str, int code, int taille);
  
-int Recherche(struct Trie* head, uint32_t* str);
+int Recherche(struct Trie* racine, uint32_t* str);
 
 int A_un_enfant(struct Trie* curr);
 
-int Recherche_code_dans_l_arbre(struct Trie* head, uint32_t* str, int taille);
+int Recherche_code_dans_l_arbre(struct Trie* racine, uint32_t* str, int taille);
 
-int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str);
+int Recherche_un_noeud(struct Trie* racine, int code, uint32_t* str);
 
-int CompteurNoeuds(struct Trie* head);
+int CompteurNoeuds(struct Trie* racine);
 
-void Liberation(struct Trie* head);
+void Liberation(struct Trie* racine);
 
-struct Trie* Trouver_Noeud_Pere(struct Trie* head, struct Trie* child);
+struct Trie* Trouver_Noeud_Pere(struct Trie* racine, struct Trie* child);
 
 int Lien_character_pere_fils(struct Trie* pere, struct Trie* fils);
 
-int CompteurNiveaux(struct Trie * head,struct Trie * node);
+int CompteurNiveaux(struct Trie * racine,struct Trie * node);
 
 struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code);
