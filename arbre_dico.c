@@ -2,14 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int quelle_taille(uint32_t * chaine){
-    int i=0;
-    while(chaine[i] != 0){
-        i++;
-    }
-    return i;
-}
-
 // Fonction qui renvoie un nouveau noeud Trie
 struct Trie* CreationFeuille(int code)
 {
@@ -25,14 +17,16 @@ struct Trie* CreationFeuille(int code)
 }
  
 // Fonction itérative pour insérer une string dans un Trie
-void insert(struct Trie *head, uint32_t * str, int code)
+void insert(struct Trie *head, uint32_t * str, int code, int taille)
 {
     // partir du nœud racine
     struct Trie* curr = head;
     int i=0;
-    //printf("creation noeud %u %u %u %u %u %u %u %u %u %u\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],str[8],str[9]);
+    int compteur = taille;
 
-    while (str[i])
+    printf("creation noeud %u %u %u %u %u %u %u %u %u %u\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],str[8],str[9]);
+
+    while (compteur  > 0)
     {
         //printf("dans le while %u %d\n",str[i],i);
         // crée un nouveau nœud si le chemin n'existe pas
@@ -44,6 +38,7 @@ void insert(struct Trie *head, uint32_t * str, int code)
  
         // passe au caractère suivant
         i++;
+        compteur--;
     }
  
 }
@@ -73,32 +68,38 @@ int Recherche(struct Trie* head, uint32_t * str)
 }
 
 
- int Recherche_code_dans_l_arbre(struct Trie* head, uint32_t* str)
+ int Recherche_code_dans_l_arbre(struct Trie* head, uint32_t* str, int taille)
 {
     int i=0;
+    int compteur = taille;
     
     // retourne 0 si Trie est vide
     if (head == NULL) {
+        printf("head null\n");
         return -1;
     }
  
     struct Trie* curr = head;
-    while (str[i])
+    while (compteur>0)
     {
+        printf("while %d code %d compt %d\n",i, curr->code_ascii,compteur);
         // passe au nœud suivant
         curr = curr->character[str[i]];
- 
+    
         // si la string est invalide (a atteint la fin d'un chemin dans le Trie)
         if (curr == NULL) {
+            printf("on sort ici\n");
             return -1;
         }
  
         // passe au caractère suivant
         i++;
+        compteur--;
     }
  
     // renvoie 1 si le noeud courant est une feuille et que le
     // la fin de la string est atteinte
+    printf("on arrive ici\n");
     return curr->code_ascii;
 }
  
@@ -119,12 +120,16 @@ int A_un_enfant(struct Trie* curr)
 struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
 {
     if (node == NULL) {
+        printf("node null\n");
         return NULL;
     }
+
+    //printf("code_ascii %d et code %d\n",node->code_ascii,code);
 
     // Si le nœud courant est une feuille et son code correspond au code recherché
     if (node->code_ascii == code)
     {
+        printf("sortie trouvé\n");
         return node;
     }
 
@@ -133,6 +138,7 @@ struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
     {
         if (node->character[i] != NULL)
         {
+            //printf("ici valeur suivante %d\n",(node->character[i])->code_ascii);
             // Appelle récursivement la recherche pour les nœuds enfants
             struct Trie* result = Recherche_dans_l_arbre(node->character[i], code);
             if (result != NULL) {
@@ -140,7 +146,7 @@ struct Trie* Recherche_dans_l_arbre(struct Trie* node, int code)
             }
         }
     }
-    //printf("pas trouvé\n");
+
     return NULL;
 }
 
@@ -156,11 +162,13 @@ int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str)
     uint32_t chn[24];
     
     if (head == NULL ) {
+        printf("head null\n");
         return 0;
     }    
     
     memset(chn,0,24*sizeof(uint32_t));
     node = Recherche_dans_l_arbre(head, code);
+    printf("node %p \n",node);
     
     i = CompteurNiveaux(head,node)-2;
     node_enfant = node;
@@ -171,9 +179,10 @@ int Recherche_un_noeud(struct Trie* head, int code, uint32_t* str)
         node_enfant = node_parent;
         i--;
     }
-    
+    printf("chn %u %u\n",chn[0],chn[1]);
     if (node != NULL) {
-        memcpy(str,chn,quelle_taille(chn)*sizeof(uint32_t));
+        printf("on passe dans le if\n");
+        memcpy(str,chn, (CompteurNiveaux(head,node)-1) * sizeof(uint32_t));
         return 1;
     }
     else return 0;
