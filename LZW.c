@@ -27,7 +27,8 @@ void compress(FILE *input_file,FILE *output_file) {
     uint32_t last_valid[TAILLE_CHN_TEMP];
     int i;
     int j;
-    int taille;
+    int taille_last_valid=0;
+    int taille_chn=0;
     uint32_t last_code = 0;
     int nombre_bits_courant = BITS;
     int compteur_lignes = 0;
@@ -42,69 +43,74 @@ void compress(FILE *input_file,FILE *output_file) {
         chn[0] = i;
         for (j=1;j<TAILLE_CHN_TEMP;j++)
             chn[j] = 0;
-        insert(head, chn ,i);
+        insert(head, chn ,i, 1);
     }  
-    
+
     last_code = 0; 
     //fprintf(output_file,"%u ",256);
     bit_put(bf, 256, nombre_bits_courant);
     
     while ( ! feof(input_file)) { //while not end of file do
+        printf(".......................\n");
         input_symbol = getc(input_file);
         compteur_lignes++;
         //printf("input_symbol %d\n",input_symbol);
-        if (input_symbol == 255) break;//indicateur de fin
-        if (input_symbol == 0) input_symbol = NULL_CODE_9BITS;//indicateur de fin
-        //printf("Lecture de %d ligne %d\n",input_symbol,compteur_lignes);
+        if (input_symbol == 255 && feof(input_file)) break;//indicateur de fin
+        //if (input_symbol == 0) input_symbol = NULL_CODE_9BITS;//indicateur de fin
+        printf("Lecture de %d ligne %d\n",input_symbol,compteur_lignes);
         i=0;
 
-        taille = quelle_taille(last_valid);
-        while(i<taille)
+        while(i<taille_last_valid)
             {
                 chn[i] = last_valid[i] ;
                 i++;  
             }
         chn[i] = input_symbol;
         i++;
+        printf("la\n");
         while(i<TAILLE_CHN_TEMP)
             {
                 chn[i] = 0 ;
                 i++;  
             }
+        taille_chn = taille_last_valid + 1;    
+        printf("Taille_chn %d Taille_last %d\n",taille_chn,taille_last_valid);
+        printf("Recherche de %u %u %u %u %u %u %u %u %u %u \n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9]);
+        printf("Recherche code Last code %d\n",Recherche_code_dans_l_arbre(head,chn,taille_chn));
 
-        //printf("Recherche de %u %u %u %u %u %u %u %u %u %u code Rech 2 %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],Recherche_code_dans_l_arbre(head,chn));
-
-        if (Recherche(head,chn) == 1) 
+        if (Recherche_code_dans_l_arbre(head,chn,taille_chn) != -1) 
         {
             // Le code existe dans le dictionnaire
             memcpy(last_valid,chn,TAILLE_CHN_TEMP*sizeof(uint32_t));
-            last_code = Recherche_code_dans_l_arbre(head,chn);
-            //printf("%u %u %u %u %u %u %u %u %u %u Trouvé! Last_valid %u %u %u Last_code %d  \n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],last_valid[0],last_valid[1],last_valid[2],last_code);
+            taille_last_valid = taille_chn;
+            last_code = Recherche_code_dans_l_arbre(head, chn, taille_chn);
+            printf("%u %u %u %u %u %u %u %u %u %u Trouvé! Last_valid %u %u %u Last_code %d  \n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],last_valid[0],last_valid[1],last_valid[2],last_code);
         } 
         else 
         {
             // La sequence n existe pas: ajout au dictionnaire
-            insert(head, chn ,next_code);
-            //printf("Ajouté %u %u %u %u %u %u %u %u %u %u en %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],next_code);
+            insert(head, chn ,next_code, taille_chn);
+            printf("Ajouté %u %u %u %u %u %u %u %u %u %u en %d de taille %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],next_code,taille_chn);
             next_code++;
-            //printf("next_code %d\n",next_code);
-            /*if (next_code == 512) nombre_bits_courant = 10;
-            if (next_code == 1024) nombre_bits_courant = 11;
-            if (next_code == 2048) nombre_bits_courant = 12;*/
-            if (next_code == 4096) printf("Depassement de 12 bits\n");
+            printf("next_code %d\n",next_code);
 
-            //printf("%u ",last_code);
+            printf("ECRITURE %u\n",last_code);
             bit_put(bf, last_code, nombre_bits_courant); 
 
             last_valid[0] = input_symbol;
             chn[0] = input_symbol;
+            taille_last_valid = 1;
+            taille_chn = 1;
+
             for (i=1;i<TAILLE_CHN_TEMP;i++){
                 chn[i] = 0;
                 last_valid[i] = 0;
             }
-            last_code = Recherche_code_dans_l_arbre(head,chn);
-            //printf("%u %u %u %u %u %u %u %u %u %uPas trouvé: Last valid %u %u %u Last code %d  Next code %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],last_valid[0],last_valid[1],last_valid[2],last_code,next_code);
+            last_code = input_symbol;
+            printf("%u %u %u %u %u %u %u %u %u %u Pas trouvé: Last valid %u %u %u Last code %d  Next code %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],last_valid[0],last_valid[1],last_valid[2],last_code,next_code);
         }
+        printf("Taille_chn %d Taille_last %d\n",taille_chn,taille_last_valid);
+        
     }
     //fprintf(output_file,"%u ",last_code);
     bit_put(bf, last_code, nombre_bits_courant);
@@ -125,12 +131,16 @@ void decompress(FILE *input_file,FILE *output_file) {
     uint32_t last_valid[TAILLE_CHN_TEMP];
     uint32_t seq[TAILLE_CHN_TEMP];
     uint32_t chn[TAILLE_CHN_TEMP];
+    int taille_last_valid=0;
+    int taille_seq=0;
+    int taille_chn=1;
     int Trouve=0;
     uint32_t code;
     BIT_FILE *bf = bit_begin(input_file);
     struct Trie* head = CreationFeuille(-1);
     int nombre_bits_courant = BITS;
     int CompteurLignes = 0;
+    int PremierCaractere = 1;
 
     memset(chn,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
     memset(last_valid,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
@@ -141,73 +151,78 @@ void decompress(FILE *input_file,FILE *output_file) {
         chn[0] = i;
         for (j=1;j<TAILLE_CHN_TEMP;j++)
             chn[j] = 0;
-        insert(head, chn ,i);
+        insert(head, chn ,i, 1);
     }  
     
    //une boucle qui prend chaque ligne les unes apres les autres jusqu'à la fin du fichier
     while (bit_get(bf, &code, nombre_bits_courant) != EOF) {
+            printf(".......................\n");
             currentNumber = code;
             CompteurLignes++;
 
             if (currentNumber != 257 && currentNumber != 256)
             {
-                //printf("Analyse du %d avec %d bits en ligne %d\n",currentNumber,nombre_bits_courant,CompteurLignes);
+                printf("Analyse du %d avec %d bits en ligne %d\n",currentNumber,nombre_bits_courant,CompteurLignes);
                 memset(seq,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
                 Trouve = Recherche_un_noeud(head,currentNumber,*(&seq));
-                
+                printf("retour de recherche seq %u %u Trouve %d\n",seq[0],seq[1],Trouve);
+                taille_seq = CompteurNiveaux(head, Recherche_dans_l_arbre(head,currentNumber))-1;
+
                 if (Trouve != 0){ //Trouvé
-                    if (last_valid[0] != 0) {
-                        memset(chn,0,quelle_taille(chn)*sizeof(uint32_t));    
-                        memcpy(chn,last_valid,quelle_taille(last_valid)*sizeof(uint32_t));
-                        chn[quelle_taille(last_valid)] = seq[0];
-                        //printf("Taille %d\n",taille);
-                        insert(head,chn,next_code);
-                        //printf("Ajout dico en:%d last:%u %u %u %u\n",next_code,chn[0],chn[1],chn[2],chn[3]);
+
+                    memset(chn,0,taille_chn * sizeof(uint32_t));    
+                    memcpy(chn,last_valid,taille_last_valid*sizeof(uint32_t));
+                    chn[taille_last_valid] = seq[0];
+                    taille_chn = taille_last_valid + 1;
+                    printf("Taille chn %d\n",taille_chn);
+                    if (PremierCaractere == 1) 
+                    { 
+                        PremierCaractere = 0; 
+                    }
+                    else
+                    {
+                        insert(head,chn,next_code,taille_chn);
+                        printf("Ajout dico en:%d chn:%u %u %u %u taille %d\n",next_code,chn[0],chn[1],chn[2],chn[3],taille_chn);
                         next_code++;
-                        /*if (next_code == 512) nombre_bits_courant = 10;
-                        if (next_code == 1024) nombre_bits_courant = 11;
-                        if (next_code == 2048) nombre_bits_courant = 12;*/
-                        if (next_code == 4096) printf("Depassement de 12 bits\n");
                     }
                     
-                    memset(last_valid,0,quelle_taille(last_valid)*sizeof(uint32_t));
-                    memcpy(last_valid,seq,quelle_taille(seq)*sizeof(uint32_t)) ;
+                    memset(last_valid,0,taille_last_valid * sizeof(uint32_t));
+                    memcpy(last_valid,seq,taille_seq * sizeof(uint32_t)) ;
+                    taille_last_valid = taille_seq;
 
-                    for (i=0;i<quelle_taille(seq);i++)
+                    for (i=0;i<taille_seq;i++)
                         {
-                            //printf("%u\n", seq[i]);
-                            if (seq[i] != 255)
-                                fprintf(output_file,"%c", seq[i]); 
-                            else
-                                fprintf(output_file,"%c", 0);
+                            printf("ECRITURE %u\n", seq[i]);
+                            fprintf(output_file,"%c", seq[i]); 
                         }  
-                    //printf("%d Trouvé! last:%u %u %u seq:%u %u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],seq[3],next_code);
+                    printf("%d Trouvé! last:%u %u %u seq:%u %u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],seq[3],next_code);
                 } 
                 else //Pas trouvé
                 {
-                    memcpy(seq,last_valid,quelle_taille(last_valid)*sizeof(uint32_t));  
-                    seq[quelle_taille(last_valid)] = last_valid[0];
+                    memcpy(seq, last_valid, taille_last_valid * sizeof(uint32_t));  
+                    seq[taille_last_valid] = last_valid[0];
+                    taille_seq = taille_last_valid + 1;
 
-                    memcpy(chn,last_valid,quelle_taille(last_valid)*sizeof(uint32_t));   
-                    chn[quelle_taille(last_valid)] = seq[0];
-                    insert(head,chn,next_code);
-                    //printf("Ajout dico next:%d last:%u %u %u\n",next_code,chn[0],chn[1],chn[2]);
+                    memcpy(chn,last_valid,taille_last_valid*sizeof(uint32_t));   
+                    chn[taille_last_valid] = seq[0];
+                    taille_chn = taille_last_valid + 1;
+                    insert(head,chn,next_code, taille_chn);
+                
+                    printf("Ajout dico next:%d chn:%u %u %u taille %d\n",next_code,chn[0],chn[1],chn[2],taille_chn);
                     next_code++;
                     /*if (next_code == 512) nombre_bits_courant = 10;
                     if (next_code == 1024) nombre_bits_courant = 11;
                     if (next_code == 2048) nombre_bits_courant = 12;*/
                     if (next_code == 4096) printf("Depassement de 12 bits\n");
 
-                    memcpy(last_valid,seq,quelle_taille(seq)*sizeof(uint32_t)) ;   
-                    for (i=0;i<quelle_taille(seq);i++)
+                    memcpy(last_valid, seq, taille_seq * sizeof(uint32_t)) ; 
+                    taille_last_valid = taille_seq;  
+                    for (i=0;i<taille_seq;i++)
                     {
-                        //printf("%u\n", seq[i]);
-                        if (seq[i] != 255)
-                            fprintf(output_file,"%c", seq[i]); 
-                        else
-                            fprintf(output_file,"%c", 0);
+                        printf("%u\n", seq[i]);
+                        fprintf(output_file,"%c", seq[i]); 
                     }     
-                    //printf("%d Pas Trouvé! last:%u %u %u seq:%u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],next_code);
+                    printf("%d Pas Trouvé! last:%u %u %u seq:%u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],next_code);
                 }
             }       
     }
