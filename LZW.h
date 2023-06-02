@@ -1,8 +1,5 @@
-#ifndef LZW_H
-#define LZW_H
+void compress(FILE *fpIn, FILE *fpOut);
 
-void decompress(FILE *input_file,FILE *output_file) ;
+void decompress(FILE *fpIn, FILE *fpOut);
 
-void compress(FILE *input_file,FILE *output_file) ;
-
-#endif
+#define CURRENT_MAX_CODES(bits)     ((unsigned int)(1 << (bits)))
