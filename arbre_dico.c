@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define TAILLE_CHN_TEMP 30
+
 // Fonction qui renvoie un nouveau noeud Trie
 struct Trie* CreationFeuille(int code)
 {
@@ -41,31 +43,6 @@ void insert(struct Trie *racine, uint32_t * str, int code, int taille)
  
 }
  
-// Fonction itérative pour rechercher une string dans un Trie. Il renvoie 1
-// si la string est trouvée dans le Trie ; sinon, il renvoie 0.
-int Recherche(struct Trie* racine, uint32_t * str)
-{
-    int i=0;
-    
-    // retourne 0 si Trie est vide
-    if (racine == NULL) {
-        return 0;
-    }
- 
-    struct Trie* curr = racine;
-    while (str[i])
-    {
-        curr = curr->character[str[i]];
- 
-        if (curr == NULL) 
-            return 0;
-        i++;
-    }
- 
-    return 1;
-}
-
-
 // Fonction itérative pour rechercher un code dans un Trie. Il renvoie le code
 // si la string est trouvée dans le Trie ; sinon, il renvoie -1.
  int Recherche_code_dans_l_arbre(struct Trie* racine, uint32_t* str, int taille)
@@ -154,13 +131,13 @@ int Recherche_un_noeud(struct Trie* racine, int code, uint32_t* str)
     
     int enieme = 0;
     int i = 0;
-    uint32_t chn[24];
+    uint32_t chn[TAILLE_CHN_TEMP];
     
     if (racine == NULL ) {
         return 0;
     }    
     
-    memset(chn,0,24*sizeof(uint32_t));
+    memset(chn,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
     node = Recherche_dans_l_arbre(racine, code);
     
     i = CompteurNiveaux(racine,node)-2;

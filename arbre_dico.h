@@ -13,7 +13,7 @@ struct Trie* CreationFeuille(int code);
  
 void insert(struct Trie *racine, uint32_t * str, int code, int taille);
  
-int Recherche(struct Trie* racine, uint32_t* str);
+/*int Recherche(struct Trie* racine, uint32_t* str);*/
 
 int A_un_enfant(struct Trie* curr);
 
