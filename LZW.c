@@ -4,128 +4,127 @@
 #include "bit_io.h"
 #include "arbre_dico.h"
 #include "LZW.h"
+#include "GIF.h"
+#include <math.h>
 
-#define CLEAR_CODE 256
-#define END_CODE 257
-#define NEXT_CODE 258
-#define MIN_CODE_SIZE 9
-#define MAX_CODE_SIZE 12
 
-#define TAILLE_CHN_TEMP 24
-
-struct Trie * Initialisation_dico(){
-    struct Trie* racine = CreationFeuille(-1);
-    uint32_t * chn_dico;
-    int i;
-
-    chn_dico = (uint32_t*)malloc(2*sizeof(uint32_t));
-    memset(chn_dico,0,2*sizeof(uint32_t));
-
-    // Initialise le dictionnaire avec les codes ascii
-    for (i = 0; i < 256; i++) {
-        chn_dico[0] = i;
-        insert(racine, chn_dico ,i, 1);
-    }  
-
-    free(chn_dico);
-    return racine;
-}
-
-void compress(FILE *input_file,FILE *output_file) {
+void compress(FILE *input_file, FILE *output_file, int max_code_size) {
     BIT_FILE *bf = bit_begin(output_file);
-    uint32_t next_code = NEXT_CODE;
+    int next_code = NEXT_CODE;
     uint8_t input_symbol;
     uint32_t * chn;
     uint32_t * last_valid;
     int i;
     int taille_last_valid=0;
     int taille_chn=0;
-    uint32_t last_code = 0;
+    int last_code = 0;
     int current_code_size = MIN_CODE_SIZE;
     struct Trie* racine = Initialisation_dico();
 
+    // Alloue la mémoire et initialise chn et last_valid
     chn = (uint32_t*)malloc(TAILLE_CHN_TEMP*sizeof(uint32_t));
     last_valid = (uint32_t*)malloc(TAILLE_CHN_TEMP*sizeof(uint32_t));
-
     memset(chn,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
     memset(last_valid,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
 
+    // Initialise last_code
     last_code = 0; 
-    bit_put(bf, 256, current_code_size); //fprintf(output_file,"%u ",256);
-     
-    while ( ! feof(input_file)) { //tant que la fin du fichier n'est pas atteinte
-        input_symbol = getc(input_file);
-        if (input_symbol == 255 && feof(input_file)) break;//indicateurs de fin
-        //printf("Lecture de %d\n",input_symbol);
-        i=0;
 
+    // Ecrit le code CLEAR_CODE dans le fichier de sortie
+    bit_put(bf, CLEAR_CODE, current_code_size); 
+    //printf("ECRITURE %u en %d bits\n",256,current_code_size);
+     
+    // tant que le fichier d'entrée n'est pas terminé
+    while ( ! feof(input_file)) { 
+        input_symbol = getc(input_file);
+
+        // si le caractère lu est NBSP_CODE(255) et que le fichier d'entrée est terminé, on sort de la boucle
+        if (input_symbol == NBSP_CODE && feof(input_file)) break;
+        
+        // chn = last_valid + input_symbol
+        i=0;
         while(i<taille_last_valid)
-            {
-                chn[i] = last_valid[i] ;
-                i++;  
-            }
+        {
+            chn[i] = last_valid[i] ;
+            i++;  
+        }
         chn[i] = input_symbol;
         i++;
         taille_chn = taille_last_valid + 1;    
-        //printf("Taille_chn %d Taille_last %d\n",taille_chn,taille_last_valid);
-        //printf("Recherche de %u %u %u %u %u %u %u %u %u %u \n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9]);
-        //printf("Recherche code Last code %d\n",Recherche_code_dans_l_arbre(racine,chn,taille_chn));
+        
+        // Recherche de chn dans le dictionnaire
+        if (Recherche_code_dans_l_arbre(racine,chn,taille_chn) != -1) 
+        {   // Le code existe dans le dictionnaire
 
-        if (Recherche_code_dans_l_arbre(racine,chn,taille_chn) != -1) // Le code existe dans le dictionnaire
-        {
+            // last_valid = chn
             memcpy(last_valid,chn,TAILLE_CHN_TEMP*sizeof(uint32_t));
             taille_last_valid = taille_chn;
-            last_code = Recherche_code_dans_l_arbre(racine, chn, taille_chn);
-            //printf("%u %u %u %u %u %u %u %u %u %u Trouvé! Last_valid %u %u %u Last_code %d  \n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],last_valid[0],last_valid[1],last_valid[2],last_code);
-        } 
-        else  // Le code n existe pas: ajout au dictionnaire
-        {
-            insert(racine, chn ,next_code, taille_chn);
-            printf("Ajouté %u %u %u %u %u %u %u %u %u %u en %d de taille %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],next_code,taille_chn);
-            next_code++;
 
-            while ((last_code >= (CURRENT_MAX_CODES(current_code_size) - 1)) &&
-                (current_code_size < MAX_CODE_SIZE))
+            // last_code recherché dans le dictionnaire
+            last_code = Recherche_code_dans_l_arbre(racine, chn, taille_chn);
+        } 
+        else  
+        {   // Le code n existe pas: ajout au dictionnaire
+
+            // Ecriture de last_code dans le fichier de sortie
+            bit_put(bf, last_code, current_code_size); 
+            
+            // Si le dictionnaire n'est pas plein au regard du nombre de bits de codage courant
+            // Alors on ajoute chn au dictionnaire
+            if (! (next_code == pow(2,current_code_size) && current_code_size == max_code_size)) {
+                insert(racine, chn ,next_code, taille_chn);
+                next_code++;
+                
+                // on ne peut plus ajouter de code dans le dictionnaire
+                // alors il faut augmenter le nombre de bits de codage
+                if (next_code == pow(2,current_code_size)+1) {
+                    current_code_size++;
+                }    
+            }
+            // Sinon on réinitialise le dictionnaire
+            // on réinitialise les variables associées, 
+            // le nombre de bits de codage courant et le prochain code à ajouter
+            else
             {
-                bit_put(bf, (CURRENT_MAX_CODES(current_code_size) - 1),
-                    current_code_size);
-                current_code_size++;
+                // Ecriture de CLEAR_CODE dans le fichier de sortie
+                bit_put(bf, CLEAR_CODE, current_code_size);
+                
+                // Réinitialisation des variables
+                current_code_size = MIN_CODE_SIZE;
+                next_code = NEXT_CODE;
+                
+                // Réinitialisation du dictionnaire
+                Liberation(racine);
+                racine = Initialisation_dico();
             }
 
-            bit_put(bf, last_code, current_code_size); 
-            printf("ECRITURE %u en %d bits\n",last_code,current_code_size);
-
+            // last_valid = input_symbol
             last_valid[0] = input_symbol;
-            chn[0] = input_symbol;
             taille_last_valid = 1;
-            taille_chn = 1;
-            last_code = input_symbol;
-            //printf("%u %u %u %u %u %u %u %u %u %u Pas trouvé: Last valid %u %u %u Last code %d  Next code %d\n",chn[0],chn[1],chn[2],chn[3],chn[4],chn[5],chn[6],chn[7],chn[8],chn[9],last_valid[0],last_valid[1],last_valid[2],last_code,next_code);
-        }
 
-        if (next_code >= 4096) {
-            Liberation(racine);
-            racine = Initialisation_dico();
-            next_code = NEXT_CODE;
-        }   
-        
+            // last_code = input_symbol
+            last_code = input_symbol;
+        }
+      
     }
     
-    bit_put(bf, last_code, current_code_size); //fprintf(output_file,"%u ",last_code);
-    bit_put(bf, END_CODE, current_code_size); //fprintf(output_file,"%u",END_CODE);
+    // Ecriture de last_code et END_CODE (257) dans le fichier de sortie
+    bit_put(bf, last_code, current_code_size); 
+    bit_put(bf, END_CODE, current_code_size); 
 
+    // Libération et fermeture de bf
     bit_flush(bf);
     bit_end(bf);
 
-    //Liberation de l'arbre et des tableaux
+    //Liberation de l'arbre et des chaines
     Liberation(racine);
     free(chn);
     free(last_valid);
 }
 
-void decompress(FILE *input_file,FILE *output_file) {
+void decompress(FILE *input_file,FILE *output_file, int max_code_size) {
 
-    uint32_t next_code = NEXT_CODE;
+    int next_code = NEXT_CODE;
     int i;
     int currentNumber;
     uint32_t * last_valid;
@@ -134,121 +133,115 @@ void decompress(FILE *input_file,FILE *output_file) {
     int taille_last_valid=0;
     int taille_seq=0;
     int taille_chn=1;
-    int Trouve=0;
     uint32_t code;
     BIT_FILE *bf = bit_begin(input_file);
     int current_code_size = MIN_CODE_SIZE;
-    int PremierCaractere = 1;
-    uint32_t dictionnaire[4096][TAILLE_CHN_TEMP];
+    int * * dictionnaire;
 
+    // Alloue la mémoire de chn, last_valid et seq
     chn = (uint32_t*)malloc(TAILLE_CHN_TEMP*sizeof(uint32_t));
     last_valid = (uint32_t*)malloc(TAILLE_CHN_TEMP*sizeof(uint32_t));
     seq = (uint32_t*)malloc(TAILLE_CHN_TEMP*sizeof(uint32_t));
 
+    // Alloue la mémoire du dictionnaire en fonction de la taille maximale des codes
+    // Pour Max_code_size = 12, on a 4096 codes possibles
+    // Pour Max_code_size = 20, on a 1048576 codes possibles
+    dictionnaire = (int * *)malloc(pow(2,max_code_size)*sizeof(int*));
+    for (i = 0; i < pow(2,max_code_size); i++) {
+        dictionnaire[i] = (int*)malloc(TAILLE_CHN_TEMP*sizeof(int));
+        memset(dictionnaire[i],0,TAILLE_CHN_TEMP*sizeof(int));
+    }
+
+    // Initialise les chaines d'entiers chn, last_valid et seq à 0
     memset(chn,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
     memset(last_valid,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
     memset(seq,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
-    memset(dictionnaire,0,4096*TAILLE_CHN_TEMP*sizeof(uint32_t));
-
-    for (i = 0; i < 256; i++) {
-        dictionnaire[i][0] = i;
-        dictionnaire[i][TAILLE_CHN_TEMP-1] = 1;
-    } 
-
-   //une boucle qui prend chaque ligne les unes apres les autres jusqu'à la fin du fichier
-    while (bit_get(bf, &code, current_code_size) != EOF) {
-
-        while (((CURRENT_MAX_CODES(current_code_size) - 1) == code) &&
-            (current_code_size < MAX_CODE_SIZE))
-        {
-            current_code_size++;
-            bit_get(bf, &code, current_code_size);
-        }
-
-        currentNumber = code;
-        if (currentNumber != 257 && currentNumber != 256)
-        {
-            printf("Analyse du %d avec %d bits\n",currentNumber,current_code_size);
-            memset(seq,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
-            if (currentNumber < next_code)
-            {
-                Trouve = 1;
-                memcpy(seq, dictionnaire[currentNumber], TAILLE_CHN_TEMP * sizeof(uint32_t)) ;
-                taille_seq = dictionnaire[currentNumber][TAILLE_CHN_TEMP-1];
-                //printf("seq %u %u Trouve %d Taille %d\n",seq[0],seq[1],Trouve,taille_seq);
-                
-            }
-            else
-            {
-                Trouve = 0;
-            }
-            
-            if (Trouve != 0){ //Trouvé
-
-                memset(chn,0,taille_chn * sizeof(uint32_t));
-                memcpy(chn,last_valid,taille_last_valid*sizeof(uint32_t));
-                chn[taille_last_valid] = seq[0];
-                taille_chn = taille_last_valid + 1;
-                
-                if (PremierCaractere == 1) 
-                { 
-                    PremierCaractere = 0; 
-                }
-                else
-                {
-                    for (i=0;i<taille_chn;i++)
-                        dictionnaire[next_code][i] = chn[i];
-                    dictionnaire[next_code][TAILLE_CHN_TEMP-1] = taille_chn;
-                    printf("Ajout dico en:%d chn:%u %u %u %u taille %d\n",next_code,chn[0],chn[1],chn[2],chn[3],taille_chn);
-                    next_code++;
-                }
     
-                memset(last_valid,0,taille_last_valid * sizeof(uint32_t));
-                memcpy(last_valid,seq,taille_seq * sizeof(uint32_t)) ;
-                taille_last_valid = taille_seq;
+    // tant que le fichier d'entrée n'est pas terminé
+    while (bit_get(bf, &code, current_code_size) != EOF) {
+        currentNumber = code;
 
-                for (i=0;i<taille_seq;i++)
-                {
-                    
-                    fprintf(output_file,"%c", seq[i]); 
-                    printf("ECRITURE %c\n", seq[i]);
-                }  
-                printf("%d Trouvé! last:%u %u %u seq:%u %u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],seq[3],next_code);
-            } 
-            else //Pas trouvé
-            {
-                memcpy(seq, last_valid, taille_last_valid * sizeof(uint32_t));  
-                seq[taille_last_valid] = last_valid[0];
-                taille_seq = taille_last_valid + 1;
-
-                memcpy(chn,last_valid,taille_last_valid*sizeof(uint32_t));   
-                chn[taille_last_valid] = seq[0];
-                taille_chn = taille_last_valid + 1;
-
-                for (i=0;i<taille_chn;i++)
-                        dictionnaire[next_code][i] = chn[i];
-                dictionnaire[next_code][TAILLE_CHN_TEMP-1] = taille_chn;
-                printf("Ajout dico next:%d chn:%u %u %u taille %d\n",next_code,chn[0],chn[1],chn[2],taille_chn);
-                next_code++;
-                
-                memcpy(last_valid, seq, taille_seq * sizeof(uint32_t)) ; 
-                taille_last_valid = taille_seq;  
-                for (i=0;i<taille_seq;i++)
-                   fprintf(output_file,"%c", seq[i]);  //printf("%u\n", seq[i]);
-                printf("%d Pas Trouvé! last:%u %u %u seq:%u %u %u next:%d\n",currentNumber,last_valid[0],last_valid[1],last_valid[2],seq[0],seq[1],seq[2],next_code);
+        // Si le code lu est CLEAR_CODE (256)
+        // Alors on réinitialise le dictionnaire à 0
+        // on initialise le dictionnaire avec les codes ASCII de 0 à 256
+        if (currentNumber == CLEAR_CODE) {
+            // Réinitialisation du dictionnaire
+            for (i = 0; i < pow(2,max_code_size); i++) {
+                memset(dictionnaire[i],0,TAILLE_CHN_TEMP*sizeof(int));
             }
-        }  
 
-        if (next_code == 4096) {
-            memset(dictionnaire,0,4096*TAILLE_CHN_TEMP*sizeof(uint32_t));
-            for (i = 0; i < 256; i++) {
+            // Initialisation du dictionnaire avec les codes ascii de 0 à 256
+            for (i = 0; i < CLEAR_CODE; i++) {
                 dictionnaire[i][0] = i;
                 dictionnaire[i][TAILLE_CHN_TEMP-1] = 1;
             } 
-            next_code = NEXT_CODE;
-        }       
-    }
 
+            // Réinitialisation des variables
+            next_code = NEXT_CODE;
+            current_code_size = MIN_CODE_SIZE;
+            memset(last_valid,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
+            taille_last_valid = 0;
+
+            // On continue la lecture du fichier
+            continue;
+        }
+
+        // Si le code lu est END_CODE (257), on reprend la boucle
+        if (currentNumber == END_CODE) break;
+
+        // Initialisation de la chaine seq à 0
+        memset(seq,0,TAILLE_CHN_TEMP*sizeof(uint32_t));
+            
+        // Si le code lu est inférieur au prochain code à ajouter dans le dictionnaire
+        // Alors on récupère la chaine correspondante dans le dictionnaire
+        if (currentNumber < next_code){ 
+            memcpy(seq, dictionnaire[currentNumber], TAILLE_CHN_TEMP * sizeof(uint32_t)) ;
+            taille_seq = dictionnaire[currentNumber][TAILLE_CHN_TEMP-1];
+        } 
+        // Sinon on récupère la chaine seq = last_valid + last_valid[0]
+        else { 
+            memcpy(seq, last_valid, taille_last_valid * sizeof(uint32_t));  
+            seq[taille_last_valid] = last_valid[0];
+            taille_seq = taille_last_valid + 1;
+        }    
+
+        // Ecriture de seq dans le fichier de sortie
+        for (i=0;i<taille_seq;i++)
+            fprintf(output_file,"%c", seq[i]); 
+        
+        // chn = last_valid + seq[0]
+        memset(chn,0,taille_chn * sizeof(uint32_t));
+        memcpy(chn,last_valid,taille_last_valid*sizeof(uint32_t));   
+        chn[taille_last_valid] = seq[0];
+        taille_chn = taille_last_valid + 1;
+
+        // Si la chaine last_valid n'est pas vide
+        // Alors on ajoute chn au dictionnaire
+        if (taille_last_valid != 0){ 
+            // Ajout de chn au dictionnaire à l'emplacement next_code   
+            for (i=0;i<taille_chn;i++)
+                    dictionnaire[next_code][i] = chn[i];
+            // En bout de chaine, on stocke la taille de la chaine (Gestion du 0)        
+            dictionnaire[next_code][TAILLE_CHN_TEMP-1] = taille_chn;
+            next_code++;
+
+            // Si le prochain code à ajouter dans le dictionnaire est une puissance de 2
+            // Alors on augmente le nombre de bits de codage courant
+            // Tant que le nombre de bits de codage courant est inférieur à la taille maximale des codes
+            if (next_code == pow(2,current_code_size) && current_code_size < max_code_size) {
+                current_code_size++;
+            }
+            
+        }
+
+        // last_valid = seq        
+        memset(last_valid,0,taille_last_valid * sizeof(uint32_t));
+        memcpy(last_valid, seq, taille_seq * sizeof(uint32_t)) ; 
+        taille_last_valid = taille_seq;  
+ 
+    }  
+
+    // Libération et fermeture de bf
     bit_flush(bf);
     bit_end(bf);
 
@@ -256,65 +249,162 @@ void decompress(FILE *input_file,FILE *output_file) {
     free(chn);
     free(last_valid);
     free(seq);
+
+    // Libération du dictionnaire
+    for (i = 0; i < pow(2,max_code_size); i++) {
+        free(dictionnaire[i]);
+    }
+    free(dictionnaire);
 }
 
 int main(int argc, char* argv[]) {
     FILE *input_file;
     FILE *output_file;
     char * output_file_name;
+    char chn_argv2[2];
 
-    if (argc > 2) {
-    } else {
-        printf("Format: ./LZW (encode or decode) NomFichier\n");
+    // Si le nombre d'arguments est différent de 4
+    // Alors on affiche le format d'appel du programme
+    // et on quitte le programme
+    if (argc != 4) {
+        printf("Format: ./LZW (encode / decode / gif) (-maxBYTES) NomFichier\nexemple: ./LZW encode -max20 MonFichier.txt\n");
         exit(1);
     }
 
-    if (strcmp(argv[1] , "encode") == 0 || strcmp(argv[1] , "decode") == 0) {
+    // Si le premier argument est différent de "encode", "decode" ou "gif"
+    // Alors on affiche le format d'appel du programme
+    // et on quitte le programme
+    if (!(strcmp(argv[1] , "encode") == 0 || strcmp(argv[1] , "decode") == 0 || strcmp(argv[1] , "gif") == 0)) {
+        printf("Format: ./LZW (encode / decode / gif) (-maxBYTES) NomFichier\nexemple: ./LZW encode -max20 MonFichier.txt\n");
+        exit(1);
+    }
+
+    // Si le deuxième argument est dans "-max12" à "-max20"
+    // Alors on récupère le nombre de bits de codage
+    // Sinon on affiche le format d'appel du programme
+    // et on quitte le programme
+    if (strcmp(argv[2], "-max12") == 0 || strcmp(argv[2], "-max13") == 0 || strcmp(argv[2], "-max14") == 0 || strcmp(argv[2], "-max15") == 0 || strcmp(argv[2], "-max16") == 0 || strcmp(argv[2], "-max17") == 0 || strcmp(argv[2], "-max18") == 0 || strcmp(argv[2], "-max19") == 0 || strcmp(argv[2], "-max20") == 0 ) {
+        chn_argv2[0] = argv[2][4];
+        chn_argv2[1] = argv[2][5];
     }
     else {
-        printf("Format: ./LZW (encode or decode) NomFichier\n");
+        printf("Format: ./LZW (encode / decode / gif) (-maxBYTES) NomFichier\nexemple: ./LZW encode -max20 MonFichier.txt\n");
         exit(1);
     }
-
-    output_file_name = (char*)malloc(strlen(argv[2]) + 10);
+    // On initialise le nom du fichier de sortie
+    // en fonction du premier argument et du nom du fichier d'entrée
+    // On alloue la mémoire pour le nom du fichier de sortie
+    output_file_name = (char*)malloc(strlen(argv[3]) + 10);
     if (strcmp(argv[1] , "encode") == 0) strcpy(output_file_name, "encode_");
-    else strcpy(output_file_name, "decode_");
-    strcat(output_file_name, argv[2]);
+    if (strcmp(argv[1] , "decode") == 0)  strcpy(output_file_name, "decode_");
+    if (strcmp(argv[1] , "gif") == 0)  strcpy(output_file_name, "gif_");
+    strcat(output_file_name, argv[3]);
 
+    // Si le premier argument est "encode"
+    // Alors on ouvre le fichier d'entrée en lecture binaire
+    // et on ouvre le fichier de sortie en écriture
     if (strcmp(argv[1] , "encode") == 0) {
-        input_file = fopen(argv[2], "rb");
+        // On ouvre le fichier d'entrée en lecture binaire
+        input_file = fopen(argv[3], "rb");
         if (input_file == NULL) {
             fprintf(stderr, "Erreur d ouverture de fichier\n");
             exit(1);
         }
+
+        // On ouvre le fichier de sortie en écriture
         output_file = fopen(output_file_name, "w");
         if (output_file == NULL) {
             fprintf(stderr, "Erreur d ouverture de fichier\n");
             exit(1);
         } 
-        compress(input_file, output_file);
+        
+        // On compresse le fichier d'entrée
+        // en utilisant l'algorithme de compression LZW
+        // et on écrit la version compressée du fichier dans le fichier de sortie
+        // en utilisant le nombre de bits de codage spécifié
+        compress(input_file, output_file, atoi(chn_argv2));
+
+        // On ferme les fichiers d'entrée et de sortie
+        fclose(input_file);
+        fclose(output_file);
+    }    
+
+    /***************************************************************/
+    
+    FILE* image_file = fopen(argv[3], "rb");  
+
+    if (image_file == NULL) {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+        return 1;
+    }
+
+    // Lire les octets de l'entête de l'image pour obtenir la largeur et la hauteur
+    unsigned char width_bytes[4];
+    unsigned char height_bytes[4];
+
+    fseek(image_file, 18, SEEK_SET);  // Positionner le curseur après les 18 premiers octets de l'entête de l'image
+
+    fread(width_bytes, sizeof(unsigned char), 4, image_file);  // Lire 4 octets pour la largeur
+    fread(height_bytes, sizeof(unsigned char), 4, image_file);  // Lire 4 octets pour la hauteur
+
+    // Convertir les octets en entiers pour obtenir la largeur et la hauteur
+    int width = *(int*)width_bytes;
+    int height = *(int*)height_bytes;
+
+    fclose(image_file);
+
+    if (strcmp(argv[1] , "gif") == 0) {
+        
+        // On ouvre le fichier d'entrée en lecture binaire
+        input_file = fopen(argv[3], "rb");
+        if (input_file == NULL) {
+            fprintf(stderr, "Erreur d ouverture de fichier\n");
+            exit(1);
+        }
+
+        // On ouvre le fichier de sortie en écriture
+        output_file = fopen(output_file_name, "w");
+        if (output_file == NULL) {
+            fprintf(stderr, "Erreur d ouverture de fichier\n");
+            exit(1);
+        } 
+        
+        creerGIF(input_file, output_file,width,height);
 
         fclose(input_file);
         fclose(output_file);
     }
 
+    /*********************************************************************/
+
+    // Si le premier argument est "decode"
+    // Alors on ouvre le fichier d'entrée en lecture binaire
+    // et on ouvre le fichier de sortie en écriture
     if (strcmp(argv[1] , "decode") == 0) {
-        input_file = fopen(argv[2], "rb");
+        // On ouvre le fichier d'entrée en lecture binaire
+        input_file = fopen(argv[3], "rb");
         if (input_file == NULL) {
             fprintf(stderr, "Erreur d ouverture de fichier\n");
             exit(1);
         }
+        // On ouvre le fichier de sortie en écriture
         output_file = fopen(output_file_name, "w");
         if (output_file == NULL) {
             fprintf(stderr, "Erreur d ouverture de fichier\n");
             exit(1);
         } 
 
-        decompress(input_file,output_file);
+        // On décompresse le fichier d'entrée
+        // en utilisant l'algorithme de décompression LZW
+        // et on écrit la version décompressée du fichier dans le fichier de sortie
+        // en utilisant le nombre de bits de codage spécifié
+        decompress(input_file,output_file,atoi(chn_argv2));
 
+        // On ferme les fichiers d'entrée et de sortie
         fclose(input_file);
         fclose(output_file);
     }
 
+    // On libère la mémoire allouée pour le nom du fichier de sortie
     free(output_file_name);
 }
