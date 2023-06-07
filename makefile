@@ -1,12 +1,12 @@
 CC := gcc
-CFLAGS := -Wall 
+CFLAGS := -Wall -pedantic 
 LDLIBS := -lm -Werror
-OBJ := bit_io.o arbre_dico.o LZW.o
+OBJ := bit_io.o arbre_dico.o LZW.o GIF.o
 MAIN := LZW
 
 all: LZW
 
-LZW.o: LZW.h bit_io.h bit_io.c arbre_dico.h arbre_dico.c LZW.c 
+LZW.o: LZW.h bit_io.h bit_io.c arbre_dico.h arbre_dico.c LZW.c GIF.h GIF.c
 	$(CC) -c LZW.c $(CFLAGS)
 
 LZW: $(OBJ)
