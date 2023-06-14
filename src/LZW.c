@@ -159,11 +159,12 @@ void uncompress(FILE *input_file,FILE *output_file, int max_code_size) {
     /* tant que le fichier d'entrée n'est pas terminé */
     while (bit_get(bf, &code, current_code_size) != EOF) {
         currentNumber = code;
-
+        
         /* Si le code lu est CLEAR_CODE (256)
            Alors on réinitialise le dictionnaire à 0
            on initialise le dictionnaire avec les codes ASCII de 0 à 256 */
         if (currentNumber == CLEAR_CODE) {
+            
             /* Réinitialisation du dictionnaire */
             for (i = 0; i < pow(2,max_code_size); i++) {
                 memset(dictionnaire[i],0,TAILLE_CHN_TEMP*sizeof(int));
@@ -220,7 +221,7 @@ void uncompress(FILE *input_file,FILE *output_file, int max_code_size) {
             /* Vérification que le prochain code à ajouter dans le dictionnaire n'est pas une puissance de 2
                Si c'est le cas, on quitte le programme */
             if (pow(2,max_code_size) == next_code){
-                printf("Vérifier le MAX_CODE_SIZE passé en paramètre\n");
+                printf("Veuillez vérifier le MAX_CODE_SIZE passé en paramètre\n");
                 exit(1);
             }
 
@@ -247,12 +248,15 @@ void uncompress(FILE *input_file,FILE *output_file, int max_code_size) {
  
     }  
 
+    if (bit_get(bf, &code, current_code_size) > 0)
+        printf("Veuillez vérifier le MAX_CODE_SIZE passé en paramètre\n");
+                
     /* Libération et fermeture de bf */
     bit_flush(bf);
     bit_end(bf);
 
     /* Liberation de l'arbre et des tableaux */
-    free(chn);
+    free(chn);0
     free(last_valid);
     free(seq);
 
