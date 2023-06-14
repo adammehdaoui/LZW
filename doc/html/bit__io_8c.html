@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Shootemup: Référence du fichier src/bit_io.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Shootemup
+   </div>
+   <div id="projectbrief">Shootemup en C (projet INFO1)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier bit_io.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="bit__io_8h_source.html">../include/bit_io.h</a>&quot;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de bit_io.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c__incl.png" border="0" usemap="#asrc_2bit__io_8c" alt=""/></div>
+<map name="asrc_2bit__io_8c" id="asrc_2bit__io_8c">
+<area shape="rect" title=" " alt="" coords="166,5,258,31"/>
+<area shape="rect" href="bit__io_8h.html" title=" " alt="" coords="19,79,152,104"/>
+<area shape="rect" title=" " alt="" coords="177,79,247,104"/>
+<area shape="rect" title=" " alt="" coords="271,79,334,104"/>
+<area shape="rect" title=" " alt="" coords="5,152,72,177"/>
+<area shape="rect" title=" " alt="" coords="97,152,167,177"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a09015f17575837aa5292ccec504dda1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit__io_8c.html#a09015f17575837aa5292ccec504dda1f">bit_begin</a> (FILE *f)</td></tr>
+<tr class="separator:a09015f17575837aa5292ccec504dda1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aef8f303a6f068ec534fcea66cdd32d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a> (<a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *bf)</td></tr>
+<tr class="separator:a2aef8f303a6f068ec534fcea66cdd32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67807d23488df6164b02712fc0ad645c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit__io_8c.html#a67807d23488df6164b02712fc0ad645c">bit_end</a> (<a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *bf)</td></tr>
+<tr class="separator:a67807d23488df6164b02712fc0ad645c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a631c1b02aae10deeb4796de42a413340"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit__io_8c.html#a631c1b02aae10deeb4796de42a413340">bit_eof</a> (<a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *bf)</td></tr>
+<tr class="separator:a631c1b02aae10deeb4796de42a413340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cdf4c7b5936b52ff230abed310dfb26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit__io_8c.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a> (<a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *bf, uint32_t data, int nbits)</td></tr>
+<tr class="separator:a6cdf4c7b5936b52ff230abed310dfb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56281f582b09e5019733655bc0aea29f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bit__io_8c.html#a56281f582b09e5019733655bc0aea29f">bit_get</a> (<a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *bf, uint32_t *data, int nbits)</td></tr>
+<tr class="separator:a56281f582b09e5019733655bc0aea29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a09015f17575837aa5292ccec504dda1f" name="a09015f17575837aa5292ccec504dda1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09015f17575837aa5292ccec504dda1f">&#9670;&#160;</a></span>bit_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> * bit_begin </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">    5</span>                             {</div>
+<div class="line"><span class="lineno">    6</span>    <a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf = (<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *)malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a>));</div>
+<div class="line"><span class="lineno">    7</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">fp</a> = f;</div>
+<div class="line"><span class="lineno">    8</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> = 0;</div>
+<div class="line"><span class="lineno">    9</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> = 0;</div>
+<div class="line"><span class="lineno">   10</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">status</a> = 0;</div>
+<div class="line"><span class="lineno">   11</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">nb_bytes</a> = 0;</div>
+<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> bf;</div>
+<div class="line"><span class="lineno">   13</span>}</div>
+<div class="ttc" id="astruct__bit__file_html"><div class="ttname"><a href="struct__bit__file.html">_bit_file</a></div><div class="ttdef"><b>Definition:</b> bit_io.h:10</div></div>
+<div class="ttc" id="astruct__bit__file_html_a785e2bb602559f6c3f50ce076d0641b5"><div class="ttname"><a href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a></div><div class="ttdeci">int nb_bytes</div><div class="ttdef"><b>Definition:</b> bit_io.h:24</div></div>
+<div class="ttc" id="astruct__bit__file_html_ab14f0ac631a09748e9b74feb83a5e36b"><div class="ttname"><a href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">_bit_file::bufpos</a></div><div class="ttdeci">int bufpos</div><div class="ttdef"><b>Definition:</b> bit_io.h:18</div></div>
+<div class="ttc" id="astruct__bit__file_html_ab9e0cf41c2fa6239222ca252451ea05b"><div class="ttname"><a href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">_bit_file::buffer</a></div><div class="ttdeci">uint64_t buffer</div><div class="ttdef"><b>Definition:</b> bit_io.h:15</div></div>
+<div class="ttc" id="astruct__bit__file_html_ad16be80f2d27bd7a429d81d4fdb78abc"><div class="ttname"><a href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">_bit_file::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> bit_io.h:21</div></div>
+<div class="ttc" id="astruct__bit__file_html_af72c9471db84d7a3402f2a9e2acf70bc"><div class="ttname"><a href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a></div><div class="ttdeci">FILE * fp</div><div class="ttdef"><b>Definition:</b> bit_io.h:12</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">_bit_file::buffer</a>, <a class="el" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">_bit_file::bufpos</a>, <a class="el" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a>, <a class="el" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a>, et <a class="el" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">_bit_file::status</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>, et <a class="el" href="LZW_8h.html#a6bb458f6ab10e259d6b656a878132e6f">uncompress()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c_a09015f17575837aa5292ccec504dda1f_icgraph.png" border="0" usemap="#abit__io_8c_a09015f17575837aa5292ccec504dda1f_icgraph" alt=""/></div>
+<map name="abit__io_8c_a09015f17575837aa5292ccec504dda1f_icgraph" id="abit__io_8c_a09015f17575837aa5292ccec504dda1f_icgraph">
+<area shape="rect" title=" " alt="" coords="257,55,340,80"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="116,5,201,31"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="116,55,201,80"/>
+<area shape="rect" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,104,209,129"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,55,60,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a67807d23488df6164b02712fc0ad645c" name="a67807d23488df6164b02712fc0ad645c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67807d23488df6164b02712fc0ad645c">&#9670;&#160;</a></span>bit_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bit_end </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *&#160;</td>
+          <td class="paramname"><em>bf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   17</span>                          {</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordtype">int</span> n;</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> ((fcntl(fileno(bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">fp</a>), F_GETFL) &amp; O_ACCMODE) == O_WRONLY) {</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_function" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a>(bf);</div>
+<div class="line"><span class="lineno">   22</span>    }</div>
+<div class="line"><span class="lineno">   23</span>    n = bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">nb_bytes</a>;</div>
+<div class="line"><span class="lineno">   24</span>    free(bf);</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> n;</div>
+<div class="line"><span class="lineno">   26</span>}</div>
+<div class="ttc" id="abit__io_8c_html_a2aef8f303a6f068ec534fcea66cdd32d"><div class="ttname"><a href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a></div><div class="ttdeci">void bit_flush(BIT_FILE *bf)</div><div class="ttdef"><b>Definition:</b> bit_io.c:55</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush()</a>, <a class="el" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a>, et <a class="el" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>, et <a class="el" href="LZW_8h.html#a6bb458f6ab10e259d6b656a878132e6f">uncompress()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c_a67807d23488df6164b02712fc0ad645c_cgraph.png" border="0" usemap="#abit__io_8c_a67807d23488df6164b02712fc0ad645c_cgraph" alt=""/></div>
+<map name="abit__io_8c_a67807d23488df6164b02712fc0ad645c_cgraph" id="abit__io_8c_a67807d23488df6164b02712fc0ad645c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,76,31"/>
+<area shape="rect" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d" title=" " alt="" coords="124,5,201,31"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c_a67807d23488df6164b02712fc0ad645c_icgraph.png" border="0" usemap="#abit__io_8c_a67807d23488df6164b02712fc0ad645c_icgraph" alt=""/></div>
+<map name="abit__io_8c_a67807d23488df6164b02712fc0ad645c_icgraph" id="abit__io_8c_a67807d23488df6164b02712fc0ad645c_icgraph">
+<area shape="rect" title=" " alt="" coords="257,55,328,80"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="116,5,201,31"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="116,55,201,80"/>
+<area shape="rect" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,104,209,129"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,55,60,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a631c1b02aae10deeb4796de42a413340" name="a631c1b02aae10deeb4796de42a413340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a631c1b02aae10deeb4796de42a413340">&#9670;&#160;</a></span>bit_eof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bit_eof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *&#160;</td>
+          <td class="paramname"><em>bf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   28</span>                          {</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span> bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">status</a> == EOF;</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">_bit_file::status</a>.</p>
+
+</div>
+</div>
+<a id="a2aef8f303a6f068ec534fcea66cdd32d" name="a2aef8f303a6f068ec534fcea66cdd32d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aef8f303a6f068ec534fcea66cdd32d">&#9670;&#160;</a></span>bit_flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bit_flush </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *&#160;</td>
+          <td class="paramname"><em>bf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                             {</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <span class="comment">/* write final bits padded with 0s to a full byte */</span></div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> != 0) {</div>
+<div class="line"><span class="lineno">   59</span>        uint8_t <span class="keywordtype">byte</span> = bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> &amp; 0xff;</div>
+<div class="line"><span class="lineno">   60</span>        putc(<span class="keywordtype">byte</span>, bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">fp</a>);</div>
+<div class="line"><span class="lineno">   61</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">nb_bytes</a>++;</div>
+<div class="line"><span class="lineno">   62</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> = 0;</div>
+<div class="line"><span class="lineno">   63</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> = 0;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">_bit_file::buffer</a>, <a class="el" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">_bit_file::bufpos</a>, <a class="el" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a>, et <a class="el" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end()</a>, <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>, et <a class="el" href="LZW_8h.html#a6bb458f6ab10e259d6b656a878132e6f">uncompress()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c_a2aef8f303a6f068ec534fcea66cdd32d_icgraph.png" border="0" usemap="#abit__io_8c_a2aef8f303a6f068ec534fcea66cdd32d_icgraph" alt=""/></div>
+<map name="abit__io_8c_a2aef8f303a6f068ec534fcea66cdd32d_icgraph" id="abit__io_8c_a2aef8f303a6f068ec534fcea66cdd32d_icgraph">
+<area shape="rect" title=" " alt="" coords="376,55,453,80"/>
+<area shape="rect" href="bit__io_8c.html#a67807d23488df6164b02712fc0ad645c" title=" " alt="" coords="257,29,328,55"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="116,5,201,31"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="116,55,201,80"/>
+<area shape="rect" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,104,209,129"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,55,60,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56281f582b09e5019733655bc0aea29f" name="a56281f582b09e5019733655bc0aea29f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56281f582b09e5019733655bc0aea29f">&#9670;&#160;</a></span>bit_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int bit_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *&#160;</td>
+          <td class="paramname"><em>bf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   67</span>                                                     {</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordtype">int</span> extracted;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">status</a> == EOF)</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> EOF;</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">while</span> (bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> &lt; nbits) {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordtype">int</span> input = getc(bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">fp</a>);</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">if</span> (input == EOF) {</div>
+<div class="line"><span class="lineno">   77</span>            bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">status</a> = EOF;</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">return</span> EOF;</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span>        uint8_t <span class="keywordtype">byte</span> = input;</div>
+<div class="line"><span class="lineno">   81</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">nb_bytes</a>++;</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> |= (uint64_t)<span class="keywordtype">byte</span> &lt;&lt; bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a>;</div>
+<div class="line"><span class="lineno">   84</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> += 8;</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    extracted = nbits;</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>    *data = bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> &amp; ((INT64_C(1) &lt;&lt; extracted)-1);</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <span class="comment">/* remove bits from buffer and adjust bufpos */</span></div>
+<div class="line"><span class="lineno">   92</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> &gt;&gt;= extracted;</div>
+<div class="line"><span class="lineno">   93</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> -= extracted;</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> extracted;</div>
+<div class="line"><span class="lineno">   96</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">_bit_file::buffer</a>, <a class="el" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">_bit_file::bufpos</a>, <a class="el" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a>, <a class="el" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a>, et <a class="el" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">_bit_file::status</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="LZW_8h.html#a6bb458f6ab10e259d6b656a878132e6f">uncompress()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c_a56281f582b09e5019733655bc0aea29f_icgraph.png" border="0" usemap="#abit__io_8c_a56281f582b09e5019733655bc0aea29f_icgraph" alt=""/></div>
+<map name="abit__io_8c_a56281f582b09e5019733655bc0aea29f_icgraph" id="abit__io_8c_a56281f582b09e5019733655bc0aea29f_icgraph">
+<area shape="rect" title=" " alt="" coords="257,5,324,31"/>
+<area shape="rect" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,5,209,31"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6cdf4c7b5936b52ff230abed310dfb26" name="a6cdf4c7b5936b52ff230abed310dfb26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cdf4c7b5936b52ff230abed310dfb26">&#9670;&#160;</a></span>bit_put()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bit_put </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a> *&#160;</td>
+          <td class="paramname"><em>bf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   32</span>                                                     {</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">/* add bits to the buffer */</span></div>
+<div class="line"><span class="lineno">   35</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> |= (data &lt;&lt; bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a>);</div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">/*fprintf(stderr, &quot;buffer: %lx\n&quot;, bf-&gt;buffer); */</span></div>
+<div class="line"><span class="lineno">   37</span>    bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> += nbits;</div>
+<div class="line"><span class="lineno">   38</span>    <span class="comment">/*fprintf(stderr, &quot;bufpos: %d\n&quot;, bf-&gt;bufpos); */</span></div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <span class="comment">/* write full bytes from the buffer to the stream */</span></div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">while</span> (bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> &gt;= 8) {</div>
+<div class="line"><span class="lineno">   42</span>        uint8_t <span class="keywordtype">byte</span> = bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> &amp; 0xff;</div>
+<div class="line"><span class="lineno">   43</span>        <span class="comment">/*fprintf(stderr, &quot;byte: %x\n&quot;, byte); */</span></div>
+<div class="line"><span class="lineno">   44</span>        putc(<span class="keywordtype">byte</span>, bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">fp</a>);</div>
+<div class="line"><span class="lineno">   45</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">nb_bytes</a>++;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>        <span class="comment">/* remove byte from buffer and adjust bufpos */</span></div>
+<div class="line"><span class="lineno">   48</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a> &gt;&gt;= 8;</div>
+<div class="line"><span class="lineno">   49</span>        <span class="comment">/*fprintf(stderr, &quot;buffer: %lx\n&quot;, bf-&gt;buffer); */</span></div>
+<div class="line"><span class="lineno">   50</span>        bf-&gt;<a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a> -= 8;</div>
+<div class="line"><span class="lineno">   51</span>        <span class="comment">/* fprintf(stderr, &quot;bufpos: %d\n&quot;, bf-&gt;bufpos); */</span></div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">_bit_file::buffer</a>, <a class="el" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">_bit_file::bufpos</a>, <a class="el" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a>, et <a class="el" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#a86518ea0416dd325cba473b92bc674eb">compressGIF()</a>, et <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="bit__io_8c_a6cdf4c7b5936b52ff230abed310dfb26_icgraph.png" border="0" usemap="#abit__io_8c_a6cdf4c7b5936b52ff230abed310dfb26_icgraph" alt=""/></div>
+<map name="abit__io_8c_a6cdf4c7b5936b52ff230abed310dfb26_icgraph" id="abit__io_8c_a6cdf4c7b5936b52ff230abed310dfb26_icgraph">
+<area shape="rect" title=" " alt="" coords="396,55,463,80"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="108,5,193,31"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="241,55,348,80"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,55,193,80"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

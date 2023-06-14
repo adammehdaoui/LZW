@@ -1,0 +1,10 @@
+<map id="leafCreation" name="leafCreation">
+<area shape="rect" id="node1" title="Crée une feuille du Trie." alt="" coords="771,81,873,107"/>
+<area shape="rect" id="node2" href="$arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="448,56,616,81"/>
+<area shape="rect" id="node8" href="$arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="664,107,723,132"/>
+<area shape="rect" id="node3" href="$GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="241,156,400,181"/>
+<area shape="rect" id="node4" href="$GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,81,193,107"/>
+<area shape="rect" id="node6" href="$LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="278,5,363,31"/>
+<area shape="rect" id="node7" href="$GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="267,107,374,132"/>
+<area shape="rect" id="node5" href="$LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,60,81"/>
+</map>

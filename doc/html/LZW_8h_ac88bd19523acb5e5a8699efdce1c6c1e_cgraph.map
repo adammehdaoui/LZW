@@ -1,0 +1,12 @@
+<map id="compress" name="compress">
+<area shape="rect" id="node1" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="5,181,91,207"/>
+<area shape="rect" id="node2" href="$bit__io_8c.html#a09015f17575837aa5292ccec504dda1f" title=" " alt="" coords="181,5,264,31"/>
+<area shape="rect" id="node3" href="$bit__io_8c.html#a67807d23488df6164b02712fc0ad645c" title=" " alt="" coords="187,55,258,80"/>
+<area shape="rect" id="node4" href="$bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d" title=" " alt="" coords="355,80,432,105"/>
+<area shape="rect" id="node5" href="$bit__io_8c.html#a6cdf4c7b5936b52ff230abed310dfb26" title=" " alt="" coords="189,156,256,181"/>
+<area shape="rect" id="node6" href="$arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="139,257,307,283"/>
+<area shape="rect" id="node7" href="$arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="364,207,423,232"/>
+<area shape="rect" id="node9" href="$arbre__dico_8c.html#af78ab6a58f76f57baeb602e9968dd71b" title="Recherche un code dans l&#39;arbre Trie de manière itérative." alt="" coords="169,307,276,332"/>
+<area shape="rect" id="node10" href="$arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046" title="Libère la mémoire allouée pour un arbre Trie de manière récursive." alt="" coords="185,380,260,405"/>
+<area shape="rect" id="node8" href="$arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09" title="Crée une feuille du Trie." alt="" coords="480,232,583,257"/>
+</map>

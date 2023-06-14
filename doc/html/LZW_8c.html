@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Shootemup: Référence du fichier src/LZW.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Shootemup
+   </div>
+   <div id="projectbrief">Shootemup en C (projet INFO1)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier LZW.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="bit__io_8h_source.html">../include/bit_io.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="arbre__dico_8h_source.html">../include/arbre_dico.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="LZW_8h_source.html">../include/LZW.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="GIF_8h_source.html">../include/GIF.h</a>&quot;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de LZW.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="LZW_8c__incl.png" border="0" usemap="#asrc_2LZW_8c" alt=""/></div>
+<map name="asrc_2LZW_8c" id="asrc_2LZW_8c">
+<area shape="rect" title=" " alt="" coords="271,5,355,31"/>
+<area shape="rect" title=" " alt="" coords="71,225,137,251"/>
+<area shape="rect" title=" " alt="" coords="315,79,386,104"/>
+<area shape="rect" title=" " alt="" coords="410,79,481,104"/>
+<area shape="rect" href="bit__io_8h.html" title=" " alt="" coords="211,152,344,177"/>
+<area shape="rect" href="arbre__dico_8h.html" title=" " alt="" coords="21,152,187,177"/>
+<area shape="rect" href="LZW_8h.html" title=" " alt="" coords="505,79,631,104"/>
+<area shape="rect" href="GIF_8h.html" title=" " alt="" coords="123,79,240,104"/>
+<area shape="rect" title=" " alt="" coords="655,79,723,104"/>
+<area shape="rect" title=" " alt="" coords="202,225,273,251"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a2679588fd8641ed6499c0071f73a42f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9">compress</a> (FILE *input_file, FILE *output_file, int max_code_size)</td></tr>
+<tr class="memdesc:a2679588fd8641ed6499c0071f73a42f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compresse un fichier en utilisant l'algorithme de compression LZW.  <br /></td></tr>
+<tr class="separator:a2679588fd8641ed6499c0071f73a42f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee9ef7b0778201f4017bb39bb0f8c6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b">uncompress</a> (FILE *input_file, FILE *output_file, int max_code_size)</td></tr>
+<tr class="memdesc:a2ee9ef7b0778201f4017bb39bb0f8c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Décompresse un fichier en utilisant l'algorithme de décompression LZW.  <br /></td></tr>
+<tr class="separator:a2ee9ef7b0778201f4017bb39bb0f8c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a2679588fd8641ed6499c0071f73a42f9" name="a2679588fd8641ed6499c0071f73a42f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2679588fd8641ed6499c0071f73a42f9">&#9670;&#160;</a></span>compress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compress </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fpIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fpOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_code_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compresse un fichier en utilisant l'algorithme de compression LZW. </p>
+<p>Cette fonction compresse le fichier d'entrée en utilisant l'algorithme de compression spécifié. Elle écrit la version compressée du fichier dans le fichier de sortie.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_file</td><td>Le fichier d'entrée à compresser. </td></tr>
+    <tr><td class="paramname">output_file</td><td>Le fichier de sortie où écrire la version compressée du fichier. </td></tr>
+    <tr><td class="paramname">max_code_size</td><td>La taille maximale en bits des codes écrits dans le fichier de sortie. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                                      {</div>
+<div class="line"><span class="lineno">   12</span>    <a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf = <a class="code hl_function" href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin</a>(output_file);</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordtype">int</span> next_code = <a class="code hl_define" href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a>;</div>
+<div class="line"><span class="lineno">   14</span>    uint8_t input_symbol;</div>
+<div class="line"><span class="lineno">   15</span>    uint32_t * chn;</div>
+<div class="line"><span class="lineno">   16</span>    uint32_t * last_valid;</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordtype">int</span> taille_last_valid=0;</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordtype">int</span> taille_chn=0;</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordtype">int</span> last_code = 0;</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordtype">int</span> current_code_size = <a class="code hl_define" href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a>;</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* racine = <a class="code hl_function" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization</a>();</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">/* Alloue la mémoire et initialise chn et last_valid */</span></div>
+<div class="line"><span class="lineno">   25</span>    chn = (uint32_t*)malloc(<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   26</span>    last_valid = (uint32_t*)malloc(<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   27</span>    memset(chn,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   28</span>    memset(last_valid,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="comment">/* Initialise last_code */</span></div>
+<div class="line"><span class="lineno">   31</span>    last_code = 0; </div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    <span class="comment">/* Ecrit le code CLEAR_CODE dans le fichier de sortie */</span></div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_function" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a>(bf, <a class="code hl_define" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>, current_code_size); </div>
+<div class="line"><span class="lineno">   35</span>     </div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">/* tant que le fichier d&#39;entrée n&#39;est pas terminé */</span></div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">while</span> ( ! feof(input_file)) { </div>
+<div class="line"><span class="lineno">   38</span>        input_symbol = getc(input_file);</div>
+<div class="line"><span class="lineno">   39</span>        </div>
+<div class="line"><span class="lineno">   40</span>        <span class="comment">/* si le caractère lu est NBSP_CODE(255) et que le fichier d&#39;entrée est terminé, on sort de la boucle */</span></div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (input_symbol == <a class="code hl_define" href="LZW_8h.html#a1b78ef9e75a2d7f769150262d638f855">NBSP_CODE</a> &amp;&amp; feof(input_file)) <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   42</span>        </div>
+<div class="line"><span class="lineno">   43</span>        <span class="comment">/* chn = last_valid + input_symbol */</span></div>
+<div class="line"><span class="lineno">   44</span>        i=0;</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">while</span>(i&lt;taille_last_valid)</div>
+<div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            chn[i] = last_valid[i] ;</div>
+<div class="line"><span class="lineno">   48</span>            i++;  </div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>        chn[i] = input_symbol;</div>
+<div class="line"><span class="lineno">   51</span>        i++;</div>
+<div class="line"><span class="lineno">   52</span>        taille_chn = taille_last_valid + 1;  </div>
+<div class="line"><span class="lineno">   53</span>        </div>
+<div class="line"><span class="lineno">   54</span>        <span class="comment">/* Recherche de chn dans le dictionnaire */</span></div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree</a>(racine,chn,taille_chn) != -1) </div>
+<div class="line"><span class="lineno">   56</span>        {   <span class="comment">/* Le code existe dans le dictionnaire */</span></div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>            <span class="comment">/* last_valid = chn */</span></div>
+<div class="line"><span class="lineno">   59</span>            memcpy(last_valid,chn,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   60</span>            taille_last_valid = taille_chn;</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>            <span class="comment">/* last_code recherché dans le dictionnaire */</span></div>
+<div class="line"><span class="lineno">   63</span>            last_code = <a class="code hl_function" href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree</a>(racine, chn, taille_chn);</div>
+<div class="line"><span class="lineno">   64</span>        } </div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">else</span>  </div>
+<div class="line"><span class="lineno">   66</span>        {   <span class="comment">/* Le code n existe pas: ajout au dictionnaire */</span></div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>            <span class="comment">/* Ecriture de last_code dans le fichier de sortie */</span></div>
+<div class="line"><span class="lineno">   69</span>            <a class="code hl_function" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a>(bf, last_code, current_code_size); </div>
+<div class="line"><span class="lineno">   70</span>            </div>
+<div class="line"><span class="lineno">   71</span>            <span class="comment">/* Si le dictionnaire n&#39;est pas plein au regard du nombre de bits de codage courant */</span></div>
+<div class="line"><span class="lineno">   72</span>            <span class="comment">/* Alors on ajoute chn au dictionnaire */</span></div>
+<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (! (next_code == pow(2,current_code_size) &amp;&amp; current_code_size == max_code_size)) {</div>
+<div class="line"><span class="lineno">   74</span>                <a class="code hl_function" href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert</a>(racine, chn ,next_code, taille_chn);</div>
+<div class="line"><span class="lineno">   75</span>                next_code++;</div>
+<div class="line"><span class="lineno">   76</span>                </div>
+<div class="line"><span class="lineno">   77</span>                <span class="comment">/* on ne peut plus ajouter de code dans le dictionnaire</span></div>
+<div class="line"><span class="lineno">   78</span><span class="comment">                   alors il faut augmenter le nombre de bits de codage */</span></div>
+<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">if</span> (next_code == pow(2,current_code_size)+1) {</div>
+<div class="line"><span class="lineno">   80</span>                    current_code_size++;</div>
+<div class="line"><span class="lineno">   81</span>                }    </div>
+<div class="line"><span class="lineno">   82</span>            }</div>
+<div class="line"><span class="lineno">   83</span>            <span class="comment">/* Sinon on réinitialise le dictionnaire</span></div>
+<div class="line"><span class="lineno">   84</span><span class="comment">               on réinitialise les variables associées, </span></div>
+<div class="line"><span class="lineno">   85</span><span class="comment">               le nombre de bits de codage courant et le prochain code à ajouter */</span></div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   87</span>            {</div>
+<div class="line"><span class="lineno">   88</span>                <span class="comment">/* Ecriture de CLEAR_CODE dans le fichier de sortie */</span></div>
+<div class="line"><span class="lineno">   89</span>                <a class="code hl_function" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a>(bf, <a class="code hl_define" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>, current_code_size);</div>
+<div class="line"><span class="lineno">   90</span>                </div>
+<div class="line"><span class="lineno">   91</span>                <span class="comment">/* Réinitialisation des variables */</span></div>
+<div class="line"><span class="lineno">   92</span>                current_code_size = <a class="code hl_define" href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a>;</div>
+<div class="line"><span class="lineno">   93</span>                next_code = <a class="code hl_define" href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a>;</div>
+<div class="line"><span class="lineno">   94</span>                </div>
+<div class="line"><span class="lineno">   95</span>                <span class="comment">/* Réinitialisation du dictionnaire */</span></div>
+<div class="line"><span class="lineno">   96</span>                <a class="code hl_function" href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree</a>(racine);</div>
+<div class="line"><span class="lineno">   97</span>                racine = <a class="code hl_function" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization</a>();</div>
+<div class="line"><span class="lineno">   98</span>            }</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>            <span class="comment">/* last_valid = input_symbol */</span></div>
+<div class="line"><span class="lineno">  101</span>            last_valid[0] = input_symbol;</div>
+<div class="line"><span class="lineno">  102</span>            taille_last_valid = 1;</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>            <span class="comment">/* last_code = input_symbol */</span></div>
+<div class="line"><span class="lineno">  105</span>            last_code = input_symbol;</div>
+<div class="line"><span class="lineno">  106</span>        }</div>
+<div class="line"><span class="lineno">  107</span>      </div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span>    </div>
+<div class="line"><span class="lineno">  110</span>    <span class="comment">/* Ecriture de last_code et END_CODE (257) dans le fichier de sortie */</span></div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_function" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a>(bf, last_code, current_code_size); </div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_function" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a>(bf, <a class="code hl_define" href="LZW_8h.html#aac423acb743520558daf6a94e1e34534">END_CODE</a>, current_code_size); </div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>    <span class="comment">/* Libération et fermeture de bf */</span></div>
+<div class="line"><span class="lineno">  115</span>    <a class="code hl_function" href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a>(bf);</div>
+<div class="line"><span class="lineno">  116</span>    <a class="code hl_function" href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end</a>(bf);</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="comment">/* Liberation de l&#39;arbre et des chaines */</span></div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_function" href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree</a>(racine);</div>
+<div class="line"><span class="lineno">  120</span>    free(chn);</div>
+<div class="line"><span class="lineno">  121</span>    free(last_valid);</div>
+<div class="line"><span class="lineno">  122</span>}</div>
+<div class="ttc" id="aLZW_8h_html_a13c3e62ed396f50cf7887e2c5131392c"><div class="ttname"><a href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a></div><div class="ttdeci">#define TAILLE_CHN_TEMP</div><div class="ttdef"><b>Definition:</b> LZW.h:11</div></div>
+<div class="ttc" id="aLZW_8h_html_a1b78ef9e75a2d7f769150262d638f855"><div class="ttname"><a href="LZW_8h.html#a1b78ef9e75a2d7f769150262d638f855">NBSP_CODE</a></div><div class="ttdeci">#define NBSP_CODE</div><div class="ttdef"><b>Definition:</b> LZW.h:4</div></div>
+<div class="ttc" id="aLZW_8h_html_a8341e383b28c1459a2afdfeef890ff28"><div class="ttname"><a href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a></div><div class="ttdeci">#define MIN_CODE_SIZE</div><div class="ttdef"><b>Definition:</b> LZW.h:9</div></div>
+<div class="ttc" id="aLZW_8h_html_a9f70c7bd7b15eeedce9f34154db2f305"><div class="ttname"><a href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a></div><div class="ttdeci">#define NEXT_CODE</div><div class="ttdef"><b>Definition:</b> LZW.h:7</div></div>
+<div class="ttc" id="aLZW_8h_html_aac423acb743520558daf6a94e1e34534"><div class="ttname"><a href="LZW_8h.html#aac423acb743520558daf6a94e1e34534">END_CODE</a></div><div class="ttdeci">#define END_CODE</div><div class="ttdef"><b>Definition:</b> LZW.h:6</div></div>
+<div class="ttc" id="aLZW_8h_html_aecaaa7c75dc3f2e69e1f48dab3e77ea8"><div class="ttname"><a href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a></div><div class="ttdeci">#define CLEAR_CODE</div><div class="ttdef"><b>Definition:</b> LZW.h:5</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_a22061c92351516dc7f4c0578e95ae451"><div class="ttname"><a href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert</a></div><div class="ttdeci">void insert(struct Trie *racine, uint32_t *str, int code, int taille)</div><div class="ttdoc">Insère une chaîne de caractères dans l'arbre Trie de manière itérative.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:46</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_a8bf29309ce50e727391ffbad07958046"><div class="ttname"><a href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree</a></div><div class="ttdeci">void freeTree(struct Trie *racine)</div><div class="ttdoc">Libère la mémoire allouée pour un arbre Trie de manière récursive.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:100</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_af3df5b270fa18a4c3533d013e0e48cc4"><div class="ttname"><a href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization</a></div><div class="ttdeci">struct Trie * dictionaryInitialization()</div><div class="ttdoc">Initialise le dictionnaire.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:6</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_af78ab6a58f76f57baeb602e9968dd71b"><div class="ttname"><a href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree</a></div><div class="ttdeci">int findCodeTree(struct Trie *racine, uint32_t *str, int taille)</div><div class="ttdoc">Recherche un code dans l'arbre Trie de manière itérative.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:69</div></div>
+<div class="ttc" id="abit__io_8h_html_a09015f17575837aa5292ccec504dda1f"><div class="ttname"><a href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin</a></div><div class="ttdeci">BIT_FILE * bit_begin(FILE *f)</div><div class="ttdef"><b>Definition:</b> bit_io.c:5</div></div>
+<div class="ttc" id="abit__io_8h_html_a2aef8f303a6f068ec534fcea66cdd32d"><div class="ttname"><a href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a></div><div class="ttdeci">void bit_flush(BIT_FILE *bf)</div><div class="ttdef"><b>Definition:</b> bit_io.c:55</div></div>
+<div class="ttc" id="abit__io_8h_html_a67807d23488df6164b02712fc0ad645c"><div class="ttname"><a href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end</a></div><div class="ttdeci">int bit_end(BIT_FILE *bf)</div><div class="ttdef"><b>Definition:</b> bit_io.c:17</div></div>
+<div class="ttc" id="abit__io_8h_html_a6cdf4c7b5936b52ff230abed310dfb26"><div class="ttname"><a href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a></div><div class="ttdeci">void bit_put(BIT_FILE *bf, uint32_t data, int nbits)</div><div class="ttdef"><b>Definition:</b> bit_io.c:32</div></div>
+<div class="ttc" id="astructTrie_html"><div class="ttname"><a href="structTrie.html">Trie</a></div><div class="ttdoc">Structure représentant l'abre Trie.</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:14</div></div>
+<div class="ttc" id="astruct__bit__file_html"><div class="ttname"><a href="struct__bit__file.html">_bit_file</a></div><div class="ttdef"><b>Definition:</b> bit_io.h:10</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin()</a>, <a class="el" href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end()</a>, <a class="el" href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush()</a>, <a class="el" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put()</a>, <a class="el" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>, <a class="el" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization()</a>, <a class="el" href="LZW_8h.html#aac423acb743520558daf6a94e1e34534">END_CODE</a>, <a class="el" href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree()</a>, <a class="el" href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree()</a>, <a class="el" href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert()</a>, <a class="el" href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a>, <a class="el" href="LZW_8h.html#a1b78ef9e75a2d7f769150262d638f855">NBSP_CODE</a>, <a class="el" href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a>, et <a class="el" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="LZW_8c_a2679588fd8641ed6499c0071f73a42f9_cgraph.png" border="0" usemap="#aLZW_8c_a2679588fd8641ed6499c0071f73a42f9_cgraph" alt=""/></div>
+<map name="aLZW_8c_a2679588fd8641ed6499c0071f73a42f9_cgraph" id="aLZW_8c_a2679588fd8641ed6499c0071f73a42f9_cgraph">
+<area shape="rect" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="5,181,91,207"/>
+<area shape="rect" href="bit__io_8c.html#a09015f17575837aa5292ccec504dda1f" title=" " alt="" coords="181,5,264,31"/>
+<area shape="rect" href="bit__io_8c.html#a67807d23488df6164b02712fc0ad645c" title=" " alt="" coords="187,55,258,80"/>
+<area shape="rect" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d" title=" " alt="" coords="355,80,432,105"/>
+<area shape="rect" href="bit__io_8c.html#a6cdf4c7b5936b52ff230abed310dfb26" title=" " alt="" coords="189,156,256,181"/>
+<area shape="rect" href="arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="139,257,307,283"/>
+<area shape="rect" href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="364,207,423,232"/>
+<area shape="rect" href="arbre__dico_8c.html#af78ab6a58f76f57baeb602e9968dd71b" title="Recherche un code dans l&#39;arbre Trie de manière itérative." alt="" coords="169,307,276,332"/>
+<area shape="rect" href="arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046" title="Libère la mémoire allouée pour un arbre Trie de manière récursive." alt="" coords="185,380,260,405"/>
+<area shape="rect" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09" title="Crée une feuille du Trie." alt="" coords="480,232,583,257"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="LZW_8c_a2679588fd8641ed6499c0071f73a42f9_icgraph.png" border="0" usemap="#aLZW_8c_a2679588fd8641ed6499c0071f73a42f9_icgraph" alt=""/></div>
+<map name="aLZW_8c_a2679588fd8641ed6499c0071f73a42f9_icgraph" id="aLZW_8c_a2679588fd8641ed6499c0071f73a42f9_icgraph">
+<area shape="rect" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="108,5,193,31"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  266</span>                                 {</div>
+<div class="line"><span class="lineno">  267</span>    FILE *input_file;</div>
+<div class="line"><span class="lineno">  268</span>    FILE *output_file;</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordtype">char</span> * output_file_name;</div>
+<div class="line"><span class="lineno">  270</span>    <span class="keywordtype">char</span> chn_argv2[2];</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>    <span class="comment">/* Si le nombre d&#39;arguments est différent de 4</span></div>
+<div class="line"><span class="lineno">  273</span><span class="comment">       Alors on affiche le format d&#39;appel du programme</span></div>
+<div class="line"><span class="lineno">  274</span><span class="comment">       et on quitte le programme */</span></div>
+<div class="line"><span class="lineno">  275</span>    <span class="keywordflow">if</span> (argc != 4) {</div>
+<div class="line"><span class="lineno">  276</span>        printf(<span class="stringliteral">&quot;Format: ./LZW (encode / decode / gif) (-maxBYTES) NomFichier\nexemple: ./LZW encode -max20 MonFichier.txt\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  277</span>        exit(1);</div>
+<div class="line"><span class="lineno">  278</span>    }</div>
+<div class="line"><span class="lineno">  279</span> </div>
+<div class="line"><span class="lineno">  280</span>    <span class="comment">/* Si le premier argument est différent de &quot;encode&quot;, &quot;decode&quot; ou &quot;gif&quot;</span></div>
+<div class="line"><span class="lineno">  281</span><span class="comment">       Alors on affiche le format d&#39;appel du programme</span></div>
+<div class="line"><span class="lineno">  282</span><span class="comment">       et on quitte le programme */</span></div>
+<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">if</span> (!(strcmp(argv[1] , <span class="stringliteral">&quot;encode&quot;</span>) == 0 || strcmp(argv[1] , <span class="stringliteral">&quot;decode&quot;</span>) == 0 || strcmp(argv[1] , <span class="stringliteral">&quot;gif&quot;</span>) == 0)) {</div>
+<div class="line"><span class="lineno">  284</span>        printf(<span class="stringliteral">&quot;Format: ./LZW (encode / decode / gif) (-maxBYTES) NomFichier\nexemple: ./LZW encode -max20 MonFichier.txt\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  285</span>        exit(1);</div>
+<div class="line"><span class="lineno">  286</span>    }</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>    <span class="comment">/* Si le deuxième argument est dans &quot;-max12&quot; à &quot;-max20&quot;</span></div>
+<div class="line"><span class="lineno">  289</span><span class="comment">       Alors on récupère le nombre de bits de codage</span></div>
+<div class="line"><span class="lineno">  290</span><span class="comment">       Sinon on affiche le format d&#39;appel du programme</span></div>
+<div class="line"><span class="lineno">  291</span><span class="comment">       et on quitte le programme */</span></div>
+<div class="line"><span class="lineno">  292</span>    <span class="keywordflow">if</span> (strcmp(argv[2], <span class="stringliteral">&quot;-max12&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max13&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max14&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max15&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max16&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max17&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max18&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max19&quot;</span>) == 0 || strcmp(argv[2], <span class="stringliteral">&quot;-max20&quot;</span>) == 0 ) {</div>
+<div class="line"><span class="lineno">  293</span>        chn_argv2[0] = argv[2][4];</div>
+<div class="line"><span class="lineno">  294</span>        chn_argv2[1] = argv[2][5];</div>
+<div class="line"><span class="lineno">  295</span>    }</div>
+<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  297</span>        printf(<span class="stringliteral">&quot;Format: ./LZW (encode / decode / gif) (-maxBYTES) NomFichier\nexemple: ./LZW encode -max20 MonFichier.txt\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  298</span>        exit(1);</div>
+<div class="line"><span class="lineno">  299</span>    }</div>
+<div class="line"><span class="lineno">  300</span>    <span class="comment">/* On initialise le nom du fichier de sortie</span></div>
+<div class="line"><span class="lineno">  301</span><span class="comment">       en fonction du premier argument et du nom du fichier d&#39;entrée</span></div>
+<div class="line"><span class="lineno">  302</span><span class="comment">       On alloue la mémoire pour le nom du fichier de sortie */</span></div>
+<div class="line"><span class="lineno">  303</span>    output_file_name = (<span class="keywordtype">char</span>*)malloc(strlen(argv[3]) + 10);</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">if</span> (strcmp(argv[1] , <span class="stringliteral">&quot;encode&quot;</span>) == 0) strcpy(output_file_name, <span class="stringliteral">&quot;encode_&quot;</span>);</div>
+<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">if</span> (strcmp(argv[1] , <span class="stringliteral">&quot;decode&quot;</span>) == 0)  strcpy(output_file_name, <span class="stringliteral">&quot;decode_&quot;</span>);</div>
+<div class="line"><span class="lineno">  306</span>    <span class="keywordflow">if</span> (strcmp(argv[1] , <span class="stringliteral">&quot;gif&quot;</span>) == 0)  strcpy(output_file_name, <span class="stringliteral">&quot;gif_&quot;</span>);</div>
+<div class="line"><span class="lineno">  307</span>    strcat(output_file_name, argv[3]);</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>    <span class="comment">/* Si le premier argument est &quot;encode&quot;</span></div>
+<div class="line"><span class="lineno">  310</span><span class="comment">       Alors on ouvre le fichier d&#39;entrée en lecture binaire</span></div>
+<div class="line"><span class="lineno">  311</span><span class="comment">       et on ouvre le fichier de sortie en écriture */</span></div>
+<div class="line"><span class="lineno">  312</span>    <span class="keywordflow">if</span> (strcmp(argv[1] , <span class="stringliteral">&quot;encode&quot;</span>) == 0) {</div>
+<div class="line"><span class="lineno">  313</span>        <span class="comment">/* On ouvre le fichier d&#39;entrée en lecture binaire */</span></div>
+<div class="line"><span class="lineno">  314</span>        input_file = fopen(argv[3], <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line"><span class="lineno">  315</span>        <span class="keywordflow">if</span> (input_file == NULL) {</div>
+<div class="line"><span class="lineno">  316</span>            fprintf(stderr, <span class="stringliteral">&quot;Erreur d ouverture de fichier\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  317</span>            exit(1);</div>
+<div class="line"><span class="lineno">  318</span>        }</div>
+<div class="line"><span class="lineno">  319</span> </div>
+<div class="line"><span class="lineno">  320</span>        <span class="comment">/* On ouvre le fichier de sortie en écriture */</span></div>
+<div class="line"><span class="lineno">  321</span>        output_file = fopen(output_file_name, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><span class="lineno">  322</span>        <span class="keywordflow">if</span> (output_file == NULL) {</div>
+<div class="line"><span class="lineno">  323</span>            fprintf(stderr, <span class="stringliteral">&quot;Erreur d ouverture de fichier\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  324</span>            exit(1);</div>
+<div class="line"><span class="lineno">  325</span>        } </div>
+<div class="line"><span class="lineno">  326</span>        </div>
+<div class="line"><span class="lineno">  327</span>        <span class="comment">/* On compresse le fichier d&#39;entrée</span></div>
+<div class="line"><span class="lineno">  328</span><span class="comment">           en utilisant l&#39;algorithme de compression LZW</span></div>
+<div class="line"><span class="lineno">  329</span><span class="comment">           et on écrit la version compressée du fichier dans le fichier de sortie</span></div>
+<div class="line"><span class="lineno">  330</span><span class="comment">           en utilisant le nombre de bits de codage spécifié */</span></div>
+<div class="line"><span class="lineno">  331</span>        <a class="code hl_function" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9">compress</a>(input_file, output_file, atoi(chn_argv2));</div>
+<div class="line"><span class="lineno">  332</span> </div>
+<div class="line"><span class="lineno">  333</span>        <span class="comment">/* On ferme les fichiers d&#39;entrée et de sortie */</span></div>
+<div class="line"><span class="lineno">  334</span>        fclose(input_file);</div>
+<div class="line"><span class="lineno">  335</span>        fclose(output_file);</div>
+<div class="line"><span class="lineno">  336</span>    }    </div>
+<div class="line"><span class="lineno">  337</span> </div>
+<div class="line"><span class="lineno">  338</span><span class="comment">    /***************************************************************/</span></div>
+<div class="line"><span class="lineno">  339</span>    </div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (strcmp(argv[1] , <span class="stringliteral">&quot;gif&quot;</span>) == 0) {</div>
+<div class="line"><span class="lineno">  341</span>        </div>
+<div class="line"><span class="lineno">  342</span>        <span class="comment">/* On ouvre le fichier d&#39;entrée en lecture binaire */</span></div>
+<div class="line"><span class="lineno">  343</span>        input_file = fopen(argv[3], <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line"><span class="lineno">  344</span>        <span class="keywordflow">if</span> (input_file == NULL) {</div>
+<div class="line"><span class="lineno">  345</span>            fprintf(stderr, <span class="stringliteral">&quot;Erreur d ouverture de fichier\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  346</span>            exit(1);</div>
+<div class="line"><span class="lineno">  347</span>        }</div>
+<div class="line"><span class="lineno">  348</span> </div>
+<div class="line"><span class="lineno">  349</span>        <span class="comment">/* On ouvre le fichier de sortie en écriture */</span></div>
+<div class="line"><span class="lineno">  350</span>        output_file = fopen(output_file_name, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><span class="lineno">  351</span>        <span class="keywordflow">if</span> (output_file == NULL) {</div>
+<div class="line"><span class="lineno">  352</span>            fprintf(stderr, <span class="stringliteral">&quot;Erreur d ouverture de fichier\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  353</span>            exit(1);</div>
+<div class="line"><span class="lineno">  354</span>        } </div>
+<div class="line"><span class="lineno">  355</span>        </div>
+<div class="line"><span class="lineno">  356</span>        <a class="code hl_function" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF</a>(input_file, output_file, atoi(chn_argv2));</div>
+<div class="line"><span class="lineno">  357</span> </div>
+<div class="line"><span class="lineno">  358</span>        fclose(input_file);</div>
+<div class="line"><span class="lineno">  359</span>        fclose(output_file);</div>
+<div class="line"><span class="lineno">  360</span>    }</div>
+<div class="line"><span class="lineno">  361</span> </div>
+<div class="line"><span class="lineno">  362</span><span class="comment">    /*********************************************************************/</span></div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>    <span class="comment">/* Si le premier argument est &quot;decode&quot;</span></div>
+<div class="line"><span class="lineno">  365</span><span class="comment">       Alors on ouvre le fichier d&#39;entrée en lecture binaire</span></div>
+<div class="line"><span class="lineno">  366</span><span class="comment">       et on ouvre le fichier de sortie en écriture */</span></div>
+<div class="line"><span class="lineno">  367</span>    <span class="keywordflow">if</span> (strcmp(argv[1] , <span class="stringliteral">&quot;decode&quot;</span>) == 0) {</div>
+<div class="line"><span class="lineno">  368</span>        <span class="comment">/* On ouvre le fichier d&#39;entrée en lecture binaire */</span></div>
+<div class="line"><span class="lineno">  369</span>        input_file = fopen(argv[3], <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line"><span class="lineno">  370</span>        <span class="keywordflow">if</span> (input_file == NULL) {</div>
+<div class="line"><span class="lineno">  371</span>            fprintf(stderr, <span class="stringliteral">&quot;Erreur d ouverture de fichier\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  372</span>            exit(1);</div>
+<div class="line"><span class="lineno">  373</span>        }</div>
+<div class="line"><span class="lineno">  374</span>        <span class="comment">/* On ouvre le fichier de sortie en écriture */</span></div>
+<div class="line"><span class="lineno">  375</span>        output_file = fopen(output_file_name, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><span class="lineno">  376</span>        <span class="keywordflow">if</span> (output_file == NULL) {</div>
+<div class="line"><span class="lineno">  377</span>            fprintf(stderr, <span class="stringliteral">&quot;Erreur d ouverture de fichier\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  378</span>            exit(1);</div>
+<div class="line"><span class="lineno">  379</span>        } </div>
+<div class="line"><span class="lineno">  380</span> </div>
+<div class="line"><span class="lineno">  381</span>        <span class="comment">/* On décompresse le fichier d&#39;entrée</span></div>
+<div class="line"><span class="lineno">  382</span><span class="comment">           en utilisant l&#39;algorithme de décompression LZW</span></div>
+<div class="line"><span class="lineno">  383</span><span class="comment">           et on écrit la version décompressée du fichier dans le fichier de sortie</span></div>
+<div class="line"><span class="lineno">  384</span><span class="comment">           en utilisant le nombre de bits de codage spécifié */</span></div>
+<div class="line"><span class="lineno">  385</span>        <a class="code hl_function" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b">uncompress</a>(input_file,output_file,atoi(chn_argv2));</div>
+<div class="line"><span class="lineno">  386</span> </div>
+<div class="line"><span class="lineno">  387</span>        <span class="comment">/* On ferme les fichiers d&#39;entrée et de sortie */</span></div>
+<div class="line"><span class="lineno">  388</span>        fclose(input_file);</div>
+<div class="line"><span class="lineno">  389</span>        fclose(output_file);</div>
+<div class="line"><span class="lineno">  390</span>    }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>    <span class="comment">/* On libère la mémoire allouée pour le nom du fichier de sortie */</span></div>
+<div class="line"><span class="lineno">  393</span>    free(output_file_name);</div>
+<div class="line"><span class="lineno">  394</span> </div>
+<div class="line"><span class="lineno">  395</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  396</span>}</div>
+<div class="ttc" id="aGIF_8h_html_acc5cffe14754cc43d13e9c6dcbc14dc2"><div class="ttname"><a href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF</a></div><div class="ttdeci">void createGIF(FILE *input, FILE *output, int max_code_size)</div><div class="ttdef"><b>Definition:</b> GIF.c:253</div></div>
+<div class="ttc" id="aLZW_8c_html_a2679588fd8641ed6499c0071f73a42f9"><div class="ttname"><a href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9">compress</a></div><div class="ttdeci">void compress(FILE *input_file, FILE *output_file, int max_code_size)</div><div class="ttdoc">Compresse un fichier en utilisant l'algorithme de compression LZW.</div><div class="ttdef"><b>Definition:</b> LZW.c:11</div></div>
+<div class="ttc" id="aLZW_8c_html_a2ee9ef7b0778201f4017bb39bb0f8c6b"><div class="ttname"><a href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b">uncompress</a></div><div class="ttdeci">void uncompress(FILE *input_file, FILE *output_file, int max_code_size)</div><div class="ttdoc">Décompresse un fichier en utilisant l'algorithme de décompression LZW.</div><div class="ttdef"><b>Definition:</b> LZW.c:124</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9">compress()</a>, <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>, et <a class="el" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b">uncompress()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="LZW_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#aLZW_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
+<map name="aLZW_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="aLZW_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
+<area shape="rect" title=" " alt="" coords="5,290,60,315"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="116,391,201,417"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="116,290,201,315"/>
+<area shape="rect" href="LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,87,209,113"/>
+<area shape="rect" href="bit__io_8c.html#a09015f17575837aa5292ccec504dda1f" title=" " alt="" coords="295,87,378,113"/>
+<area shape="rect" href="bit__io_8c.html#a67807d23488df6164b02712fc0ad645c" title=" " alt="" coords="301,189,372,214"/>
+<area shape="rect" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d" title=" " alt="" coords="509,163,587,189"/>
+<area shape="rect" href="bit__io_8c.html#a6cdf4c7b5936b52ff230abed310dfb26" title=" " alt="" coords="515,369,581,394"/>
+<area shape="rect" href="arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="464,645,632,670"/>
+<area shape="rect" href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="680,594,739,619"/>
+<area shape="rect" href="arbre__dico_8c.html#af78ab6a58f76f57baeb602e9968dd71b" title="Recherche un code dans l&#39;arbre Trie de manière itérative." alt="" coords="495,543,601,569"/>
+<area shape="rect" href="arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046" title="Libère la mémoire allouée pour un arbre Trie de manière récursive." alt="" coords="511,494,585,519"/>
+<area shape="rect" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09" title="Crée une feuille du Trie." alt="" coords="787,619,889,645"/>
+<area shape="rect" href="GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="257,594,416,619"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="283,442,390,467"/>
+<area shape="rect" href="bit__io_8c.html#a56281f582b09e5019733655bc0aea29f" title=" " alt="" coords="303,38,370,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2ee9ef7b0778201f4017bb39bb0f8c6b" name="a2ee9ef7b0778201f4017bb39bb0f8c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ee9ef7b0778201f4017bb39bb0f8c6b">&#9670;&#160;</a></span>uncompress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uncompress </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fpIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fpOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_code_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Décompresse un fichier en utilisant l'algorithme de décompression LZW. </p>
+<p>Cette fonction décompresse le fichier d'entrée en utilisant l'algorithme de décompression spécifié. Elle écrit la version décompressée du fichier dans le fichier de sortie.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_file</td><td>Le fichier d'entrée à décompresser. </td></tr>
+    <tr><td class="paramname">output_file</td><td>Le fichier de sortie où écrire la version décompressée du fichier. </td></tr>
+    <tr><td class="paramname">max_code_size</td><td>La taille maximale en bits des codes de compression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">  124</span>                                                                       {</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordtype">int</span> next_code = <a class="code hl_define" href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a>;</div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordtype">int</span> currentNumber;</div>
+<div class="line"><span class="lineno">  129</span>    uint32_t * last_valid;</div>
+<div class="line"><span class="lineno">  130</span>    uint32_t * seq;</div>
+<div class="line"><span class="lineno">  131</span>    uint32_t * chn;</div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordtype">int</span> taille_last_valid=0;</div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordtype">int</span> taille_seq=0;</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordtype">int</span> taille_chn=1;</div>
+<div class="line"><span class="lineno">  135</span>    uint32_t code;</div>
+<div class="line"><span class="lineno">  136</span>    <a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf = <a class="code hl_function" href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin</a>(input_file);</div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordtype">int</span> current_code_size = <a class="code hl_define" href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a>;</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordtype">int</span> * * dictionnaire;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    <span class="comment">/* Alloue la mémoire de chn, last_valid et seq */</span></div>
+<div class="line"><span class="lineno">  141</span>    chn = (uint32_t*)malloc(<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  142</span>    last_valid = (uint32_t*)malloc(<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  143</span>    seq = (uint32_t*)malloc(<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    <span class="comment">/* Alloue la mémoire du dictionnaire en fonction de la taille maximale des codes</span></div>
+<div class="line"><span class="lineno">  146</span><span class="comment">       Pour Max_code_size = 12, on a 4096 codes possibles</span></div>
+<div class="line"><span class="lineno">  147</span><span class="comment">       Pour Max_code_size = 20, on a 1048576 codes possibles */</span></div>
+<div class="line"><span class="lineno">  148</span>    dictionnaire = (<span class="keywordtype">int</span> * *)malloc(pow(2,max_code_size)*<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>*));</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">for</span> (i = 0; i &lt; pow(2,max_code_size); i++) {</div>
+<div class="line"><span class="lineno">  150</span>        dictionnaire[i] = (<span class="keywordtype">int</span>*)malloc(<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">  151</span>        memset(dictionnaire[i],0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">  152</span>    }</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="comment">/* Initialise les chaines d&#39;entiers chn, last_valid et seq à 0 */</span></div>
+<div class="line"><span class="lineno">  155</span>    memset(chn,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  156</span>    memset(last_valid,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  157</span>    memset(seq,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  158</span>    </div>
+<div class="line"><span class="lineno">  159</span>    <span class="comment">/* tant que le fichier d&#39;entrée n&#39;est pas terminé */</span></div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">while</span> (<a class="code hl_function" href="bit__io_8h.html#a56281f582b09e5019733655bc0aea29f">bit_get</a>(bf, &amp;code, current_code_size) != EOF) {</div>
+<div class="line"><span class="lineno">  161</span>        currentNumber = code;</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>        <span class="comment">/* Si le code lu est CLEAR_CODE (256)</span></div>
+<div class="line"><span class="lineno">  164</span><span class="comment">           Alors on réinitialise le dictionnaire à 0</span></div>
+<div class="line"><span class="lineno">  165</span><span class="comment">           on initialise le dictionnaire avec les codes ASCII de 0 à 256 */</span></div>
+<div class="line"><span class="lineno">  166</span>        <span class="keywordflow">if</span> (currentNumber == <a class="code hl_define" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>) {</div>
+<div class="line"><span class="lineno">  167</span>            <span class="comment">/* Réinitialisation du dictionnaire */</span></div>
+<div class="line"><span class="lineno">  168</span>            <span class="keywordflow">for</span> (i = 0; i &lt; pow(2,max_code_size); i++) {</div>
+<div class="line"><span class="lineno">  169</span>                memset(dictionnaire[i],0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">  170</span>            }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>            <span class="comment">/* Initialisation du dictionnaire avec les codes ascii de 0 à 256 */</span></div>
+<div class="line"><span class="lineno">  173</span>            <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_define" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>; i++) {</div>
+<div class="line"><span class="lineno">  174</span>                dictionnaire[i][0] = i;</div>
+<div class="line"><span class="lineno">  175</span>                dictionnaire[i][<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>-1] = 1;</div>
+<div class="line"><span class="lineno">  176</span>            } </div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>            <span class="comment">/* Réinitialisation des variables */</span></div>
+<div class="line"><span class="lineno">  179</span>            next_code = <a class="code hl_define" href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a>;</div>
+<div class="line"><span class="lineno">  180</span>            current_code_size = <a class="code hl_define" href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a>;</div>
+<div class="line"><span class="lineno">  181</span>            memset(last_valid,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  182</span>            taille_last_valid = 0;</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>            <span class="comment">/* On continue la lecture du fichier */</span></div>
+<div class="line"><span class="lineno">  185</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  186</span>        }</div>
+<div class="line"><span class="lineno">  187</span> </div>
+<div class="line"><span class="lineno">  188</span>        <span class="comment">/* Si le code lu est END_CODE (257), on reprend la boucle */</span></div>
+<div class="line"><span class="lineno">  189</span>        <span class="keywordflow">if</span> (currentNumber == <a class="code hl_define" href="LZW_8h.html#aac423acb743520558daf6a94e1e34534">END_CODE</a>) <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>        <span class="comment">/* Initialisation de la chaine seq à 0 */</span></div>
+<div class="line"><span class="lineno">  192</span>        memset(seq,0,<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  193</span>            </div>
+<div class="line"><span class="lineno">  194</span>        <span class="comment">/* Si le code lu est inférieur au prochain code à ajouter dans le dictionnaire</span></div>
+<div class="line"><span class="lineno">  195</span><span class="comment">           Alors on récupère la chaine correspondante dans le dictionnaire */</span></div>
+<div class="line"><span class="lineno">  196</span>        <span class="keywordflow">if</span> (currentNumber &lt; next_code){ </div>
+<div class="line"><span class="lineno">  197</span>            memcpy(seq, dictionnaire[currentNumber], <a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a> * <span class="keyword">sizeof</span>(uint32_t)) ;</div>
+<div class="line"><span class="lineno">  198</span>            taille_seq = dictionnaire[currentNumber][<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>-1];</div>
+<div class="line"><span class="lineno">  199</span>        } </div>
+<div class="line"><span class="lineno">  200</span>        <span class="comment">/* Sinon on récupère la chaine seq = last_valid + last_valid[0] */</span></div>
+<div class="line"><span class="lineno">  201</span>        <span class="keywordflow">else</span> { </div>
+<div class="line"><span class="lineno">  202</span>            memcpy(seq, last_valid, taille_last_valid * <span class="keyword">sizeof</span>(uint32_t));  </div>
+<div class="line"><span class="lineno">  203</span>            seq[taille_last_valid] = last_valid[0];</div>
+<div class="line"><span class="lineno">  204</span>            taille_seq = taille_last_valid + 1;</div>
+<div class="line"><span class="lineno">  205</span>        }    </div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>        <span class="comment">/* Ecriture de seq dans le fichier de sortie */</span></div>
+<div class="line"><span class="lineno">  208</span>        <span class="keywordflow">for</span> (i=0;i&lt;taille_seq;i++)</div>
+<div class="line"><span class="lineno">  209</span>            fprintf(output_file,<span class="stringliteral">&quot;%c&quot;</span>, seq[i]); </div>
+<div class="line"><span class="lineno">  210</span>        </div>
+<div class="line"><span class="lineno">  211</span>        <span class="comment">/* chn = last_valid + seq[0] */</span></div>
+<div class="line"><span class="lineno">  212</span>        memset(chn,0,taille_chn * <span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  213</span>        memcpy(chn,last_valid,taille_last_valid*<span class="keyword">sizeof</span>(uint32_t));   </div>
+<div class="line"><span class="lineno">  214</span>        chn[taille_last_valid] = seq[0];</div>
+<div class="line"><span class="lineno">  215</span>        taille_chn = taille_last_valid + 1;</div>
+<div class="line"><span class="lineno">  216</span> </div>
+<div class="line"><span class="lineno">  217</span>        <span class="comment">/* Si la chaine last_valid n&#39;est pas vide</span></div>
+<div class="line"><span class="lineno">  218</span><span class="comment">           Alors on ajoute chn au dictionnaire */</span></div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">if</span> (taille_last_valid != 0){ </div>
+<div class="line"><span class="lineno">  220</span>            <span class="comment">/* Vérification que le prochain code à ajouter dans le dictionnaire n&#39;est pas une puissance de 2</span></div>
+<div class="line"><span class="lineno">  221</span><span class="comment">               Si c&#39;est le cas, on quitte le programme */</span></div>
+<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">if</span> (pow(2,max_code_size) == next_code){</div>
+<div class="line"><span class="lineno">  223</span>                printf(<span class="stringliteral">&quot;Vérifier le MAX_CODE_SIZE passé en paramètre\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  224</span>                exit(1);</div>
+<div class="line"><span class="lineno">  225</span>            }</div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>            <span class="comment">/* Ajout de chn au dictionnaire à l&#39;emplacement next_code */</span></div>
+<div class="line"><span class="lineno">  228</span>            <span class="keywordflow">for</span> (i=0;i&lt;taille_chn;i++)</div>
+<div class="line"><span class="lineno">  229</span>                    dictionnaire[next_code][i] = chn[i];</div>
+<div class="line"><span class="lineno">  230</span>            <span class="comment">/* En bout de chaine, on stocke la taille de la chaine (Gestion du 0) */</span>        </div>
+<div class="line"><span class="lineno">  231</span>            dictionnaire[next_code][<a class="code hl_define" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>-1] = taille_chn;</div>
+<div class="line"><span class="lineno">  232</span>            next_code++;</div>
+<div class="line"><span class="lineno">  233</span> </div>
+<div class="line"><span class="lineno">  234</span>            <span class="comment">/* Si le prochain code à ajouter dans le dictionnaire est une puissance de 2</span></div>
+<div class="line"><span class="lineno">  235</span><span class="comment">               Alors on augmente le nombre de bits de codage courant</span></div>
+<div class="line"><span class="lineno">  236</span><span class="comment">               Tant que le nombre de bits de codage courant est inférieur à la taille maximale des codes */</span></div>
+<div class="line"><span class="lineno">  237</span>            <span class="keywordflow">if</span> (next_code == pow(2,current_code_size) &amp;&amp; current_code_size &lt; max_code_size) {</div>
+<div class="line"><span class="lineno">  238</span>                current_code_size++;</div>
+<div class="line"><span class="lineno">  239</span>            }</div>
+<div class="line"><span class="lineno">  240</span>            </div>
+<div class="line"><span class="lineno">  241</span>        }</div>
+<div class="line"><span class="lineno">  242</span> </div>
+<div class="line"><span class="lineno">  243</span>        <span class="comment">/* last_valid = seq */</span>     </div>
+<div class="line"><span class="lineno">  244</span>        memset(last_valid,0,taille_last_valid * <span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">  245</span>        memcpy(last_valid, seq, taille_seq * <span class="keyword">sizeof</span>(uint32_t)) ; </div>
+<div class="line"><span class="lineno">  246</span>        taille_last_valid = taille_seq;  </div>
+<div class="line"><span class="lineno">  247</span> </div>
+<div class="line"><span class="lineno">  248</span>    }  </div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>    <span class="comment">/* Libération et fermeture de bf */</span></div>
+<div class="line"><span class="lineno">  251</span>    <a class="code hl_function" href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a>(bf);</div>
+<div class="line"><span class="lineno">  252</span>    <a class="code hl_function" href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end</a>(bf);</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>    <span class="comment">/* Liberation de l&#39;arbre et des tableaux */</span></div>
+<div class="line"><span class="lineno">  255</span>    free(chn);</div>
+<div class="line"><span class="lineno">  256</span>    free(last_valid);</div>
+<div class="line"><span class="lineno">  257</span>    free(seq);</div>
+<div class="line"><span class="lineno">  258</span> </div>
+<div class="line"><span class="lineno">  259</span>    <span class="comment">/* Libération du dictionnaire */</span></div>
+<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">for</span> (i = 0; i &lt; pow(2,max_code_size); i++) {</div>
+<div class="line"><span class="lineno">  261</span>        free(dictionnaire[i]);</div>
+<div class="line"><span class="lineno">  262</span>    }</div>
+<div class="line"><span class="lineno">  263</span>    free(dictionnaire);</div>
+<div class="line"><span class="lineno">  264</span>}</div>
+<div class="ttc" id="abit__io_8h_html_a56281f582b09e5019733655bc0aea29f"><div class="ttname"><a href="bit__io_8h.html#a56281f582b09e5019733655bc0aea29f">bit_get</a></div><div class="ttdeci">int bit_get(BIT_FILE *bf, uint32_t *data, int nbits)</div><div class="ttdef"><b>Definition:</b> bit_io.c:67</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin()</a>, <a class="el" href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end()</a>, <a class="el" href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush()</a>, <a class="el" href="bit__io_8h.html#a56281f582b09e5019733655bc0aea29f">bit_get()</a>, <a class="el" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>, <a class="el" href="LZW_8h.html#aac423acb743520558daf6a94e1e34534">END_CODE</a>, <a class="el" href="LZW_8h.html#a8341e383b28c1459a2afdfeef890ff28">MIN_CODE_SIZE</a>, <a class="el" href="LZW_8h.html#a9f70c7bd7b15eeedce9f34154db2f305">NEXT_CODE</a>, et <a class="el" href="LZW_8h.html#a13c3e62ed396f50cf7887e2c5131392c">TAILLE_CHN_TEMP</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="LZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_cgraph.png" border="0" usemap="#aLZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_cgraph" alt=""/></div>
+<map name="aLZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_cgraph" id="aLZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_cgraph">
+<area shape="rect" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="5,80,107,105"/>
+<area shape="rect" href="bit__io_8c.html#a09015f17575837aa5292ccec504dda1f" title=" " alt="" coords="155,5,237,31"/>
+<area shape="rect" href="bit__io_8c.html#a67807d23488df6164b02712fc0ad645c" title=" " alt="" coords="161,55,231,80"/>
+<area shape="rect" href="bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d" title=" " alt="" coords="285,80,363,105"/>
+<area shape="rect" href="bit__io_8c.html#a56281f582b09e5019733655bc0aea29f" title=" " alt="" coords="163,156,229,181"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="LZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_icgraph.png" border="0" usemap="#aLZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_icgraph" alt=""/></div>
+<map name="aLZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_icgraph" id="aLZW_8c_a2ee9ef7b0778201f4017bb39bb0f8c6b_icgraph">
+<area shape="rect" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,5,209,31"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>
