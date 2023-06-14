@@ -50,7 +50,6 @@ void compress(FILE *input_file, FILE *output_file, int max_code_size) {
         chn[i] = input_symbol;
         i++;
         taille_chn = taille_last_valid + 1;  
-        if (taille_chn > TAILLE_CHN_TEMP) printf("Erreur taille chn\n");
         
         /* Recherche de chn dans le dictionnaire */
         if (findCodeTree(racine,chn,taille_chn) != -1) 

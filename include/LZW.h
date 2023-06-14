@@ -1,4 +1,5 @@
 #ifndef LZW_H
+#define LZW_H
 
 #define NBSP_CODE 255
 #define CLEAR_CODE 256

@@ -1,8 +1,15 @@
+#ifndef ARBRE_DICO_H
+#define ARBRE_DICO_H
+
 #include <stdio.h>
 #include <stdint.h>
 
-#define CHAR_SIZE 512
+#define CHAR_SIZE 256
 
+/**
+ * @brief Structure représentant l'abre Trie
+ * 
+ */
 struct Trie
 {
     struct Trie* character[CHAR_SIZE];
@@ -61,4 +68,4 @@ void freeTree(struct Trie* racine);
  */
 struct Trie * dictionaryInitialization();
 
-
+#endif
