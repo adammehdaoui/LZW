@@ -217,7 +217,14 @@ void uncompress(FILE *input_file,FILE *output_file, int max_code_size) {
         /* Si la chaine last_valid n'est pas vide
            Alors on ajoute chn au dictionnaire */
         if (taille_last_valid != 0){ 
-            /* Ajout de chn au dictionnaire à l'emplacement next_code */ 
+            /* Vérification que le prochain code à ajouter dans le dictionnaire n'est pas une puissance de 2
+               Si c'est le cas, on quitte le programme */
+            if (pow(2,max_code_size) == next_code){
+                printf("Vérifier le MAX_CODE_SIZE passé en paramètre\n");
+                exit(1);
+            }
+
+            /* Ajout de chn au dictionnaire à l'emplacement next_code */
             for (i=0;i<taille_chn;i++)
                     dictionnaire[next_code][i] = chn[i];
             /* En bout de chaine, on stocke la taille de la chaine (Gestion du 0) */        

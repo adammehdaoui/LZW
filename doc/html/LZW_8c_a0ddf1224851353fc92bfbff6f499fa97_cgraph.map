@@ -1,0 +1,18 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,290,60,315"/>
+<area shape="rect" id="node2" href="$LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="116,391,201,417"/>
+<area shape="rect" id="node12" href="$GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="116,290,201,315"/>
+<area shape="rect" id="node15" href="$LZW_8c.html#a2ee9ef7b0778201f4017bb39bb0f8c6b" title="Décompresse un fichier en utilisant l&#39;algorithme de décompression LZW." alt="" coords="108,87,209,113"/>
+<area shape="rect" id="node3" href="$bit__io_8c.html#a09015f17575837aa5292ccec504dda1f" title=" " alt="" coords="295,87,378,113"/>
+<area shape="rect" id="node4" href="$bit__io_8c.html#a67807d23488df6164b02712fc0ad645c" title=" " alt="" coords="301,189,372,214"/>
+<area shape="rect" id="node5" href="$bit__io_8c.html#a2aef8f303a6f068ec534fcea66cdd32d" title=" " alt="" coords="509,163,587,189"/>
+<area shape="rect" id="node6" href="$bit__io_8c.html#a6cdf4c7b5936b52ff230abed310dfb26" title=" " alt="" coords="515,369,581,394"/>
+<area shape="rect" id="node7" href="$arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="464,645,632,670"/>
+<area shape="rect" id="node8" href="$arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="680,594,739,619"/>
+<area shape="rect" id="node10" href="$arbre__dico_8c.html#af78ab6a58f76f57baeb602e9968dd71b" title="Recherche un code dans l&#39;arbre Trie de manière itérative." alt="" coords="495,543,601,569"/>
+<area shape="rect" id="node11" href="$arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046" title="Libère la mémoire allouée pour un arbre Trie de manière récursive." alt="" coords="511,494,585,519"/>
+<area shape="rect" id="node9" href="$arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09" title="Crée une feuille du Trie." alt="" coords="787,619,889,645"/>
+<area shape="rect" id="node13" href="$GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="257,594,416,619"/>
+<area shape="rect" id="node14" href="$GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="283,442,390,467"/>
+<area shape="rect" id="node16" href="$bit__io_8c.html#a56281f582b09e5019733655bc0aea29f" title=" " alt="" coords="303,38,370,63"/>
+</map>

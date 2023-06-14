@@ -5,7 +5,7 @@ BLD=bin/
 CC=gcc -g 
 CFLAGS=-Wall
 OBJ=${BLD}LZW.o ${BLD}arbre_dico.o ${BLD}bit_io.o ${BLD}GIF.o
-LDFLAGS=-lm 
+LDFLAGS=-lm
 OUT=LZW
 
 

@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Shootemup: Référence du fichier include/arbre_dico.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Shootemup
+   </div>
+   <div id="projectbrief">Shootemup en C (projet INFO1)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier arbre_dico.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de arbre_dico.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h__incl.png" border="0" usemap="#ainclude_2arbre__dico_8h" alt=""/></div>
+<map name="ainclude_2arbre__dico_8h" id="ainclude_2arbre__dico_8h">
+<area shape="rect" title=" " alt="" coords="9,5,162,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
+<area shape="rect" title=" " alt="" coords="97,79,167,104"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h__dep__incl.png" border="0" usemap="#ainclude_2arbre__dico_8hdep" alt=""/></div>
+<map name="ainclude_2arbre__dico_8hdep" id="ainclude_2arbre__dico_8hdep">
+<area shape="rect" title=" " alt="" coords="64,5,217,31"/>
+<area shape="rect" href="GIF_8h.html" title=" " alt="" coords="43,79,148,104"/>
+<area shape="rect" href="GIF_8c.html" title=" " alt="" coords="5,152,81,177"/>
+<area shape="rect" href="LZW_8c.html" title=" " alt="" coords="124,152,208,177"/>
+<area shape="rect" href="arbre__dico_8c.html" title=" " alt="" coords="224,79,348,104"/>
+</map>
+</div>
+</div>
+<p><a href="arbre__dico_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTrie.html">Trie</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant l'abre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>.  <a href="structTrie.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a22c7f61c2f0fa6b1943548e838055cec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a22c7f61c2f0fa6b1943548e838055cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a757d74f9796496bc732746fa39ba7a09"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structTrie.html">Trie</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre__dico_8h.html#a757d74f9796496bc732746fa39ba7a09">leafCreation</a> (int code)</td></tr>
+<tr class="memdesc:a757d74f9796496bc732746fa39ba7a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une feuille du <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>.  <br /></td></tr>
+<tr class="separator:a757d74f9796496bc732746fa39ba7a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22061c92351516dc7f4c0578e95ae451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert</a> (struct <a class="el" href="structTrie.html">Trie</a> *racine, uint32_t *str, int code, int taille)</td></tr>
+<tr class="memdesc:a22061c92351516dc7f4c0578e95ae451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insère une chaîne de caractères dans l'arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière itérative.  <br /></td></tr>
+<tr class="separator:a22061c92351516dc7f4c0578e95ae451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af78ab6a58f76f57baeb602e9968dd71b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree</a> (struct <a class="el" href="structTrie.html">Trie</a> *racine, uint32_t *str, int taille)</td></tr>
+<tr class="memdesc:af78ab6a58f76f57baeb602e9968dd71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche un code dans l'arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière itérative.  <br /></td></tr>
+<tr class="separator:af78ab6a58f76f57baeb602e9968dd71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bf29309ce50e727391ffbad07958046"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree</a> (struct <a class="el" href="structTrie.html">Trie</a> *racine)</td></tr>
+<tr class="memdesc:a8bf29309ce50e727391ffbad07958046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère la mémoire allouée pour un arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière récursive.  <br /></td></tr>
+<tr class="separator:a8bf29309ce50e727391ffbad07958046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3df5b270fa18a4c3533d013e0e48cc4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structTrie.html">Trie</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization</a> ()</td></tr>
+<tr class="memdesc:af3df5b270fa18a4c3533d013e0e48cc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le dictionnaire.  <br /></td></tr>
+<tr class="separator:af3df5b270fa18a4c3533d013e0e48cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des macros</h2>
+<a id="a22c7f61c2f0fa6b1943548e838055cec" name="a22c7f61c2f0fa6b1943548e838055cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c7f61c2f0fa6b1943548e838055cec">&#9670;&#160;</a></span>CHAR_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CHAR_SIZE&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="af3df5b270fa18a4c3533d013e0e48cc4" name="af3df5b270fa18a4c3533d013e0e48cc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3df5b270fa18a4c3533d013e0e48cc4">&#9670;&#160;</a></span>dictionaryInitialization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structTrie.html">Trie</a> * dictionaryInitialization </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le dictionnaire. </p>
+<p>Cette fonction crée et initialise un dictionnaire <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> avec les codes ASCII 0 à 256.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la racine du dictionnaire <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> initialisé. </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">    6</span>                                        {</div>
+<div class="line"><span class="lineno">    7</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* racine = <a class="code hl_function" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09">leafCreation</a>(-1);</div>
+<div class="line"><span class="lineno">    8</span>    uint32_t * chn_dico;</div>
+<div class="line"><span class="lineno">    9</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">   10</span> </div>
+<div class="line"><span class="lineno">   11</span>    <span class="comment">/* Alloue la mémoire pour chn_dico */</span></div>
+<div class="line"><span class="lineno">   12</span>    chn_dico = (uint32_t*)malloc(2*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   13</span>    memset(chn_dico,0,2*<span class="keyword">sizeof</span>(uint32_t));</div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span>    <span class="comment">/* Initialise le dictionnaire avec les codes ascii */</span></div>
+<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_define" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>; i++) {</div>
+<div class="line"><span class="lineno">   17</span>        chn_dico[0] = i;</div>
+<div class="line"><span class="lineno">   18</span>        <a class="code hl_function" href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451">insert</a>(racine, chn_dico ,i, 1);</div>
+<div class="line"><span class="lineno">   19</span>    }  </div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>    <span class="comment">/* Libère la mémoire allouée à chn_dico */</span></div>
+<div class="line"><span class="lineno">   22</span>    free(chn_dico);</div>
+<div class="line"><span class="lineno">   23</span>    </div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">/* Retourne la racine du dictionnaire */</span></div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> racine;</div>
+<div class="line"><span class="lineno">   26</span>}</div>
+<div class="ttc" id="aLZW_8h_html_aecaaa7c75dc3f2e69e1f48dab3e77ea8"><div class="ttname"><a href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a></div><div class="ttdeci">#define CLEAR_CODE</div><div class="ttdef"><b>Definition:</b> LZW.h:5</div></div>
+<div class="ttc" id="aarbre__dico_8c_html_a22061c92351516dc7f4c0578e95ae451"><div class="ttname"><a href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451">insert</a></div><div class="ttdeci">void insert(struct Trie *racine, uint32_t *str, int code, int taille)</div><div class="ttdoc">Insère une chaîne de caractères dans l'arbre Trie de manière itérative.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:46</div></div>
+<div class="ttc" id="aarbre__dico_8c_html_a757d74f9796496bc732746fa39ba7a09"><div class="ttname"><a href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09">leafCreation</a></div><div class="ttdeci">struct Trie * leafCreation(int code)</div><div class="ttdoc">Crée une feuille du Trie.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:28</div></div>
+<div class="ttc" id="astructTrie_html"><div class="ttname"><a href="structTrie.html">Trie</a></div><div class="ttdoc">Structure représentant l'abre Trie.</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:14</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="LZW_8h.html#aecaaa7c75dc3f2e69e1f48dab3e77ea8">CLEAR_CODE</a>, <a class="el" href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451">insert()</a>, et <a class="el" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09">leafCreation()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="GIF_8h.html#a92ae93d91da196b05f8c81247618b77d">amountCompressGIF()</a>, <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#a86518ea0416dd325cba473b92bc674eb">compressGIF()</a>, et <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_cgraph.png" border="0" usemap="#aarbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_cgraph" alt=""/></div>
+<map name="aarbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_cgraph" id="aarbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_cgraph">
+<area shape="rect" title="Initialise le dictionnaire." alt="" coords="5,31,173,56"/>
+<area shape="rect" href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="221,5,280,31"/>
+<area shape="rect" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09" title="Crée une feuille du Trie." alt="" coords="328,31,431,56"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_icgraph.png" border="0" usemap="#aarbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_icgraph" alt=""/></div>
+<map name="aarbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_icgraph" id="aarbre__dico_8h_af3df5b270fa18a4c3533d013e0e48cc4_icgraph">
+<area shape="rect" title="Initialise le dictionnaire." alt="" coords="448,81,616,107"/>
+<area shape="rect" href="GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="241,5,400,31"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,81,193,107"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="108,131,193,156"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="267,107,374,132"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,107,60,132"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af78ab6a58f76f57baeb602e9968dd71b" name="af78ab6a58f76f57baeb602e9968dd71b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af78ab6a58f76f57baeb602e9968dd71b">&#9670;&#160;</a></span>findCodeTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int findCodeTree </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structTrie.html">Trie</a> *&#160;</td>
+          <td class="paramname"><em>racine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recherche un code dans l'arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière itérative. </p>
+<p>Cette fonction recherche une chaîne de caractères dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> à partir de la racine spécifiée et renvoie le code associé à la chaîne de caractères si elle est trouvée dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>. Sinon, elle renvoie -1.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">racine</td><td>La racine du <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> dans lequel effectuer la recherche. </td></tr>
+    <tr><td class="paramname">str</td><td>Le tableau de caractères à rechercher dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>. </td></tr>
+    <tr><td class="paramname">taille</td><td>La taille de la chaîne de caractères à rechercher. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le code associé à la chaîne de caractères si elle est trouvée dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> ; -1 sinon. </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordtype">int</span> compteur = taille;</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* curr = racine;</div>
+<div class="line"><span class="lineno">   74</span>    </div>
+<div class="line"><span class="lineno">   75</span>    <span class="comment">/* renvoie -1 si la racine est NULL */</span></div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span> (racine == NULL) {</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   78</span>    }</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>    <span class="comment">/* tant que la fin de la chaîne de caractères n&#39;est pas atteinte */</span></div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">while</span> (compteur&gt;0)</div>
+<div class="line"><span class="lineno">   82</span>    {</div>
+<div class="line"><span class="lineno">   83</span>        <span class="comment">/* passe au nœud suivant */</span></div>
+<div class="line"><span class="lineno">   84</span>        curr = curr-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[str[i]];</div>
+<div class="line"><span class="lineno">   85</span>    </div>
+<div class="line"><span class="lineno">   86</span>        <span class="comment">/* renvoie -1 si le chemin n&#39;existe pas */</span></div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">if</span> (curr == NULL) {</div>
+<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   89</span>        }</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>        <span class="comment">/* passe au caractère suivant */</span></div>
+<div class="line"><span class="lineno">   92</span>        i++;</div>
+<div class="line"><span class="lineno">   93</span>        compteur--;</div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>    <span class="comment">/* retourne le code associé à la chaîne de caractères */</span></div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> curr-&gt;<a class="code hl_variable" href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">code_ascii</a>;</div>
+<div class="line"><span class="lineno">   98</span>}</div>
+<div class="ttc" id="astructTrie_html_a941c883a2eba3bae772a4e1ace39a601"><div class="ttname"><a href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">Trie::character</a></div><div class="ttdeci">struct Trie * character[CHAR_SIZE]</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:15</div></div>
+<div class="ttc" id="astructTrie_html_ad838e2986b72edbf4304d999febcbb84"><div class="ttname"><a href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">Trie::code_ascii</a></div><div class="ttdeci">int code_ascii</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:16</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">Trie::character</a>, et <a class="el" href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">Trie::code_ascii</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="GIF_8h.html#a92ae93d91da196b05f8c81247618b77d">amountCompressGIF()</a>, <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, et <a class="el" href="GIF_8h.html#a86518ea0416dd325cba473b92bc674eb">compressGIF()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_af78ab6a58f76f57baeb602e9968dd71b_icgraph.png" border="0" usemap="#aarbre__dico_8h_af78ab6a58f76f57baeb602e9968dd71b_icgraph" alt=""/></div>
+<map name="aarbre__dico_8h_af78ab6a58f76f57baeb602e9968dd71b_icgraph" id="aarbre__dico_8h_af78ab6a58f76f57baeb602e9968dd71b_icgraph">
+<area shape="rect" title="Recherche un code dans l&#39;arbre Trie de manière itérative." alt="" coords="448,55,555,80"/>
+<area shape="rect" href="GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="241,5,400,31"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="108,104,193,129"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="267,55,374,80"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,55,193,80"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,80,60,105"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8bf29309ce50e727391ffbad07958046" name="a8bf29309ce50e727391ffbad07958046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf29309ce50e727391ffbad07958046">&#9670;&#160;</a></span>freeTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void freeTree </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structTrie.html">Trie</a> *&#160;</td>
+          <td class="paramname"><em>racine</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libère la mémoire allouée pour un arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière récursive. </p>
+<p>Cette fonction libère la mémoire allouée pour un <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> en parcourant le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière récursive, en commençant par la racine spécifiée.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">racine</td><td>La racine du <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> à libérer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">  103</span>    <span class="comment">/* libère la mémoire allouée pour toutes les feuilles de la racine */</span></div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_define" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a>; i++) {</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">if</span> (racine-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[i] != NULL)</div>
+<div class="line"><span class="lineno">  106</span>            <a class="code hl_function" href="arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046">freeTree</a>(racine-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[i]);</div>
+<div class="line"><span class="lineno">  107</span>    }</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>    <span class="comment">/* libère la mémoire allouée pour la racine */</span></div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">if</span> (racine != NULL) {</div>
+<div class="line"><span class="lineno">  111</span>        free(racine);</div>
+<div class="line"><span class="lineno">  112</span>    }</div>
+<div class="line"><span class="lineno">  113</span>  </div>
+<div class="line"><span class="lineno">  114</span>}</div>
+<div class="ttc" id="aarbre__dico_8c_html_a8bf29309ce50e727391ffbad07958046"><div class="ttname"><a href="arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046">freeTree</a></div><div class="ttdeci">void freeTree(struct Trie *racine)</div><div class="ttdoc">Libère la mémoire allouée pour un arbre Trie de manière récursive.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:100</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_a22c7f61c2f0fa6b1943548e838055cec"><div class="ttname"><a href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a></div><div class="ttdeci">#define CHAR_SIZE</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:7</div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a>, <a class="el" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">Trie::character</a>, et <a class="el" href="arbre__dico_8c.html#a8bf29309ce50e727391ffbad07958046">freeTree()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="GIF_8h.html#a92ae93d91da196b05f8c81247618b77d">amountCompressGIF()</a>, <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#a86518ea0416dd325cba473b92bc674eb">compressGIF()</a>, <a class="el" href="GIF_8h.html#acc5cffe14754cc43d13e9c6dcbc14dc2">createGIF()</a>, et <a class="el" href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_a8bf29309ce50e727391ffbad07958046_cgraph.png" border="0" usemap="#aarbre__dico_8h_a8bf29309ce50e727391ffbad07958046_cgraph" alt=""/></div>
+<map name="aarbre__dico_8h_a8bf29309ce50e727391ffbad07958046_cgraph" id="aarbre__dico_8h_a8bf29309ce50e727391ffbad07958046_cgraph">
+<area shape="rect" title="Libère la mémoire allouée pour un arbre Trie de manière récursive." alt="" coords="5,29,80,55"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_a8bf29309ce50e727391ffbad07958046_icgraph.png" border="0" usemap="#aarbre__dico_8h_a8bf29309ce50e727391ffbad07958046_icgraph" alt=""/></div>
+<map name="aarbre__dico_8h_a8bf29309ce50e727391ffbad07958046_icgraph" id="aarbre__dico_8h_a8bf29309ce50e727391ffbad07958046_icgraph">
+<area shape="rect" title="Libère la mémoire allouée pour un arbre Trie de manière récursive." alt="" coords="448,81,523,107"/>
+<area shape="rect" href="GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="241,5,400,31"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,81,193,107"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="108,131,193,156"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="267,107,374,132"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,107,60,132"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a22061c92351516dc7f4c0578e95ae451" name="a22061c92351516dc7f4c0578e95ae451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22061c92351516dc7f4c0578e95ae451">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void insert </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structTrie.html">Trie</a> *&#160;</td>
+          <td class="paramname"><em>racine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Insère une chaîne de caractères dans l'arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> de manière itérative. </p>
+<p>Cette fonction insère une chaîne de caractères dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> à partir de la racine spécifiée.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">racine</td><td>La racine du <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> dans lequel insérer la chaîne de caractères. </td></tr>
+    <tr><td class="paramname">str</td><td>La chaîne de caractères à insérer dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>. </td></tr>
+    <tr><td class="paramname">code</td><td>Le code à associer à la chaîne de caractères dans le <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>. </td></tr>
+    <tr><td class="paramname">taille</td><td>La taille de la chaîne de caractères à insérer (permet la gestion de NULL) </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* curr = racine;</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordtype">int</span> compteur = taille;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="comment">/* tant que la fin de la chaîne de caractères n&#39;est pas atteinte */</span></div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">while</span> (compteur  &gt; 0)</div>
+<div class="line"><span class="lineno">   54</span>    {</div>
+<div class="line"><span class="lineno">   55</span>        <span class="comment">/* crée un nouveau nœud si le chemin n&#39;existe pas */</span></div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">if</span> (curr-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[str[i]] == NULL) </div>
+<div class="line"><span class="lineno">   57</span>            curr-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[str[i]] = <a class="code hl_function" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09">leafCreation</a>(code);</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>        <span class="comment">/* passe au nœud suivant */</span></div>
+<div class="line"><span class="lineno">   60</span>        curr = curr-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[str[i]];</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>        <span class="comment">/* passe au caractère suivant */</span></div>
+<div class="line"><span class="lineno">   63</span>        i++;</div>
+<div class="line"><span class="lineno">   64</span>        compteur--;</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">Trie::character</a>, et <a class="el" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09">leafCreation()</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="GIF_8h.html#a92ae93d91da196b05f8c81247618b77d">amountCompressGIF()</a>, <a class="el" href="LZW_8h.html#ac88bd19523acb5e5a8699efdce1c6c1e">compress()</a>, <a class="el" href="GIF_8h.html#a86518ea0416dd325cba473b92bc674eb">compressGIF()</a>, et <a class="el" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_cgraph.png" border="0" usemap="#aarbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_cgraph" alt=""/></div>
+<map name="aarbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_cgraph" id="aarbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_cgraph">
+<area shape="rect" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="5,5,64,31"/>
+<area shape="rect" href="arbre__dico_8c.html#a757d74f9796496bc732746fa39ba7a09" title="Crée une feuille du Trie." alt="" coords="112,5,215,31"/>
+</map>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_icgraph.png" border="0" usemap="#aarbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_icgraph" alt=""/></div>
+<map name="aarbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_icgraph" id="aarbre__dico_8h_a22061c92351516dc7f4c0578e95ae451_icgraph">
+<area shape="rect" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="664,81,723,107"/>
+<area shape="rect" href="GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="241,107,400,132"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="278,156,363,181"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="267,5,374,31"/>
+<area shape="rect" href="arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="448,56,616,81"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,69,193,95"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,107,60,132"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a757d74f9796496bc732746fa39ba7a09" name="a757d74f9796496bc732746fa39ba7a09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a757d74f9796496bc732746fa39ba7a09">&#9670;&#160;</a></span>leafCreation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structTrie.html">Trie</a> * leafCreation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée une feuille du <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>. </p>
+<p>Cette fonction crée une nouvelle feuille de l'arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> avec le code ASCII et + spécifié.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>Le code ASCII et + à assigner à la feuille de l'arbre <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur vers la nouvelle feuille du <a class="el" href="structTrie.html" title="Structure représentant l&#39;abre Trie.">Trie</a> créée. </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>    <span class="comment">/* Alloue la mémoire pour la feuille */</span></div>
+<div class="line"><span class="lineno">   33</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* node = (<span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>*)malloc(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <a class="code hl_struct" href="structTrie.html">Trie</a>));</div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">/* Initialise le code de la feuille */</span></div>
+<div class="line"><span class="lineno">   35</span>    node-&gt;<a class="code hl_variable" href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">code_ascii</a> = code;</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <span class="comment">/* Initialise tous les caractères de la feuille à NULL */</span></div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_define" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a>; i++) {</div>
+<div class="line"><span class="lineno">   39</span>        node-&gt;<a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[i] = NULL;</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    <span class="comment">/* Retourne la feuille */</span></div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">   44</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a>, <a class="el" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">Trie::character</a>, et <a class="el" href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">Trie::code_ascii</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization()</a>, et <a class="el" href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre__dico_8h_a757d74f9796496bc732746fa39ba7a09_icgraph.png" border="0" usemap="#aarbre__dico_8h_a757d74f9796496bc732746fa39ba7a09_icgraph" alt=""/></div>
+<map name="aarbre__dico_8h_a757d74f9796496bc732746fa39ba7a09_icgraph" id="aarbre__dico_8h_a757d74f9796496bc732746fa39ba7a09_icgraph">
+<area shape="rect" title="Crée une feuille du Trie." alt="" coords="771,81,873,107"/>
+<area shape="rect" href="arbre__dico_8c.html#af3df5b270fa18a4c3533d013e0e48cc4" title="Initialise le dictionnaire." alt="" coords="448,56,616,81"/>
+<area shape="rect" href="arbre__dico_8c.html#a22061c92351516dc7f4c0578e95ae451" title="Insère une chaîne de caractères dans l&#39;arbre Trie de manière itérative." alt="" coords="664,107,723,132"/>
+<area shape="rect" href="GIF_8c.html#a92ae93d91da196b05f8c81247618b77d" title=" " alt="" coords="241,156,400,181"/>
+<area shape="rect" href="GIF_8c.html#acc5cffe14754cc43d13e9c6dcbc14dc2" title=" " alt="" coords="108,81,193,107"/>
+<area shape="rect" href="LZW_8c.html#a2679588fd8641ed6499c0071f73a42f9" title="Compresse un fichier en utilisant l&#39;algorithme de compression LZW." alt="" coords="278,5,363,31"/>
+<area shape="rect" href="GIF_8c.html#a86518ea0416dd325cba473b92bc674eb" title=" " alt="" coords="267,107,374,132"/>
+<area shape="rect" href="LZW_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,60,81"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Shootemup:  Fichier source de include/bit_io.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Shootemup
+   </div>
+   <div id="projectbrief">Shootemup en C (projet INFO1)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">bit_io.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="bit__io_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef BIT_IO_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define BIT_IO_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">    A wrapper for a file pointer that allows reading/writing</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">    a variable number of bits (8..32) from/to a binary file.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct__bit__file.html">   10</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct__bit__file.html">_bit_file</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">/* A file pointer */</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">   12</a></span>    FILE *<a class="code hl_variable" href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">fp</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">/* A buffer holding partial data from the stream */</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">   15</a></span>    uint64_t <a class="code hl_variable" href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">buffer</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">/* The current number of bits in the buffer */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">   18</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">bufpos</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">/* The status of the file, 0 = ok, 1 = eof */</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">   21</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">status</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">/* Number of bytes read/written */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">nb_bytes</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">   25</a></span>} <a class="code hl_typedef" href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/* Initialise the writing to *f using mode &#39;r&#39; or &#39;w&#39;. */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *<a class="code hl_function" href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin</a>(FILE *f);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/* Return the total number of bytes read/written. */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">int</span> <a class="code hl_function" href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end</a>(<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/* Write data to the file using nbits bits. */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">void</span> <a class="code hl_function" href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a>(<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf, uint32_t data, <span class="keywordtype">int</span> nbits);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a>(<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/* Read nbits to *data from the file.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">   Return the number of bits read or EOF. */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">int</span> <a class="code hl_function" href="bit__io_8h.html#a56281f582b09e5019733655bc0aea29f">bit_get</a>(<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf, uint32_t *data, <span class="keywordtype">int</span> nbits);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/* Return 1 if eof has been detected, 0 otherwise. */</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">int</span> <a class="code hl_function" href="bit__io_8h.html#a631c1b02aae10deeb4796de42a413340">bit_eof</a>(<a class="code hl_struct" href="struct__bit__file.html">BIT_FILE</a> *bf);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif </span><span class="comment">/* BIT_IO_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abit__io_8h_html_a09015f17575837aa5292ccec504dda1f"><div class="ttname"><a href="bit__io_8h.html#a09015f17575837aa5292ccec504dda1f">bit_begin</a></div><div class="ttdeci">BIT_FILE * bit_begin(FILE *f)</div><div class="ttdef"><b>Definition:</b> bit_io.c:5</div></div>
+<div class="ttc" id="abit__io_8h_html_a2aef8f303a6f068ec534fcea66cdd32d"><div class="ttname"><a href="bit__io_8h.html#a2aef8f303a6f068ec534fcea66cdd32d">bit_flush</a></div><div class="ttdeci">void bit_flush(BIT_FILE *bf)</div><div class="ttdef"><b>Definition:</b> bit_io.c:55</div></div>
+<div class="ttc" id="abit__io_8h_html_a56281f582b09e5019733655bc0aea29f"><div class="ttname"><a href="bit__io_8h.html#a56281f582b09e5019733655bc0aea29f">bit_get</a></div><div class="ttdeci">int bit_get(BIT_FILE *bf, uint32_t *data, int nbits)</div><div class="ttdef"><b>Definition:</b> bit_io.c:67</div></div>
+<div class="ttc" id="abit__io_8h_html_a631c1b02aae10deeb4796de42a413340"><div class="ttname"><a href="bit__io_8h.html#a631c1b02aae10deeb4796de42a413340">bit_eof</a></div><div class="ttdeci">int bit_eof(BIT_FILE *bf)</div><div class="ttdef"><b>Definition:</b> bit_io.c:28</div></div>
+<div class="ttc" id="abit__io_8h_html_a67807d23488df6164b02712fc0ad645c"><div class="ttname"><a href="bit__io_8h.html#a67807d23488df6164b02712fc0ad645c">bit_end</a></div><div class="ttdeci">int bit_end(BIT_FILE *bf)</div><div class="ttdef"><b>Definition:</b> bit_io.c:17</div></div>
+<div class="ttc" id="abit__io_8h_html_a6a9cc021b9862d5bb7d692aac3945da0"><div class="ttname"><a href="bit__io_8h.html#a6a9cc021b9862d5bb7d692aac3945da0">BIT_FILE</a></div><div class="ttdeci">struct _bit_file BIT_FILE</div></div>
+<div class="ttc" id="abit__io_8h_html_a6cdf4c7b5936b52ff230abed310dfb26"><div class="ttname"><a href="bit__io_8h.html#a6cdf4c7b5936b52ff230abed310dfb26">bit_put</a></div><div class="ttdeci">void bit_put(BIT_FILE *bf, uint32_t data, int nbits)</div><div class="ttdef"><b>Definition:</b> bit_io.c:32</div></div>
+<div class="ttc" id="astruct__bit__file_html"><div class="ttname"><a href="struct__bit__file.html">_bit_file</a></div><div class="ttdef"><b>Definition:</b> bit_io.h:10</div></div>
+<div class="ttc" id="astruct__bit__file_html_a785e2bb602559f6c3f50ce076d0641b5"><div class="ttname"><a href="struct__bit__file.html#a785e2bb602559f6c3f50ce076d0641b5">_bit_file::nb_bytes</a></div><div class="ttdeci">int nb_bytes</div><div class="ttdef"><b>Definition:</b> bit_io.h:24</div></div>
+<div class="ttc" id="astruct__bit__file_html_ab14f0ac631a09748e9b74feb83a5e36b"><div class="ttname"><a href="struct__bit__file.html#ab14f0ac631a09748e9b74feb83a5e36b">_bit_file::bufpos</a></div><div class="ttdeci">int bufpos</div><div class="ttdef"><b>Definition:</b> bit_io.h:18</div></div>
+<div class="ttc" id="astruct__bit__file_html_ab9e0cf41c2fa6239222ca252451ea05b"><div class="ttname"><a href="struct__bit__file.html#ab9e0cf41c2fa6239222ca252451ea05b">_bit_file::buffer</a></div><div class="ttdeci">uint64_t buffer</div><div class="ttdef"><b>Definition:</b> bit_io.h:15</div></div>
+<div class="ttc" id="astruct__bit__file_html_ad16be80f2d27bd7a429d81d4fdb78abc"><div class="ttname"><a href="struct__bit__file.html#ad16be80f2d27bd7a429d81d4fdb78abc">_bit_file::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> bit_io.h:21</div></div>
+<div class="ttc" id="astruct__bit__file_html_af72c9471db84d7a3402f2a9e2acf70bc"><div class="ttname"><a href="struct__bit__file.html#af72c9471db84d7a3402f2a9e2acf70bc">_bit_file::fp</a></div><div class="ttdeci">FILE * fp</div><div class="ttdef"><b>Definition:</b> bit_io.h:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

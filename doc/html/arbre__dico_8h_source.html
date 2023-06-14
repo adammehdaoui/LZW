@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Shootemup:  Fichier source de include/arbre_dico.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Shootemup
+   </div>
+   <div id="projectbrief">Shootemup en C (projet INFO1)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">arbre_dico.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="arbre__dico_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ARBRE_DICO_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ARBRE_DICO_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">    7</a></span><span class="preprocessor">#define CHAR_SIZE 256</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structTrie.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">   15</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* <a class="code hl_variable" href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">character</a>[<a class="code hl_define" href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a>];</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">   16</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">code_ascii</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a>* <a class="code hl_function" href="arbre__dico_8h.html#a757d74f9796496bc732746fa39ba7a09">leafCreation</a>(<span class="keywordtype">int</span> code);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">void</span> <a class="code hl_function" href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structTrie.html">Trie</a> *racine, uint32_t * str, <span class="keywordtype">int</span> code, <span class="keywordtype">int</span> taille);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">int</span> <a class="code hl_function" href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structTrie.html">Trie</a>* racine, uint32_t* str, <span class="keywordtype">int</span> taille);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">void</span> <a class="code hl_function" href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structTrie.html">Trie</a>* racine);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">struct </span><a class="code hl_struct" href="structTrie.html">Trie</a> * <a class="code hl_function" href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aarbre__dico_8h_html_a22061c92351516dc7f4c0578e95ae451"><div class="ttname"><a href="arbre__dico_8h.html#a22061c92351516dc7f4c0578e95ae451">insert</a></div><div class="ttdeci">void insert(struct Trie *racine, uint32_t *str, int code, int taille)</div><div class="ttdoc">Insère une chaîne de caractères dans l'arbre Trie de manière itérative.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:46</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_a22c7f61c2f0fa6b1943548e838055cec"><div class="ttname"><a href="arbre__dico_8h.html#a22c7f61c2f0fa6b1943548e838055cec">CHAR_SIZE</a></div><div class="ttdeci">#define CHAR_SIZE</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:7</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_a757d74f9796496bc732746fa39ba7a09"><div class="ttname"><a href="arbre__dico_8h.html#a757d74f9796496bc732746fa39ba7a09">leafCreation</a></div><div class="ttdeci">struct Trie * leafCreation(int code)</div><div class="ttdoc">Crée une feuille du Trie.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:28</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_a8bf29309ce50e727391ffbad07958046"><div class="ttname"><a href="arbre__dico_8h.html#a8bf29309ce50e727391ffbad07958046">freeTree</a></div><div class="ttdeci">void freeTree(struct Trie *racine)</div><div class="ttdoc">Libère la mémoire allouée pour un arbre Trie de manière récursive.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:100</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_af3df5b270fa18a4c3533d013e0e48cc4"><div class="ttname"><a href="arbre__dico_8h.html#af3df5b270fa18a4c3533d013e0e48cc4">dictionaryInitialization</a></div><div class="ttdeci">struct Trie * dictionaryInitialization()</div><div class="ttdoc">Initialise le dictionnaire.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:6</div></div>
+<div class="ttc" id="aarbre__dico_8h_html_af78ab6a58f76f57baeb602e9968dd71b"><div class="ttname"><a href="arbre__dico_8h.html#af78ab6a58f76f57baeb602e9968dd71b">findCodeTree</a></div><div class="ttdeci">int findCodeTree(struct Trie *racine, uint32_t *str, int taille)</div><div class="ttdoc">Recherche un code dans l'arbre Trie de manière itérative.</div><div class="ttdef"><b>Definition:</b> arbre_dico.c:69</div></div>
+<div class="ttc" id="astructTrie_html"><div class="ttname"><a href="structTrie.html">Trie</a></div><div class="ttdoc">Structure représentant l'abre Trie.</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:14</div></div>
+<div class="ttc" id="astructTrie_html_a941c883a2eba3bae772a4e1ace39a601"><div class="ttname"><a href="structTrie.html#a941c883a2eba3bae772a4e1ace39a601">Trie::character</a></div><div class="ttdeci">struct Trie * character[CHAR_SIZE]</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:15</div></div>
+<div class="ttc" id="astructTrie_html_ad838e2986b72edbf4304d999febcbb84"><div class="ttname"><a href="structTrie.html#ad838e2986b72edbf4304d999febcbb84">Trie::code_ascii</a></div><div class="ttdeci">int code_ascii</div><div class="ttdef"><b>Definition:</b> arbre_dico.h:16</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>
