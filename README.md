@@ -22,8 +22,6 @@ Ainsi le paramètre -max peut varier de -max12 à -max20.
 
 Le fichier généré porte la dénomination encode_&#60;NomFichier&#62;
 
-
-<br>
 ## Decodage
 
 Pour lancer le décodage, il convient d'utiliser le format suivant :
